@@ -7,6 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,7 +41,11 @@ set autoindent
 "set foldmethod=syntax
 "set foldlevel=1
 "set foldclose=all
+"
 
+"--------------NERDTree-------------------
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "------------------status-line--------------
 set laststatus=2
 set statusline+=%F
