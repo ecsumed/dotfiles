@@ -1,4 +1,7 @@
 dotfiles
 ========
 
-Simple enough.
+To install, run:
+  
+    scripts/bootstap.sh
+
