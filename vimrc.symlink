@@ -7,7 +7,7 @@ call vundle#begin()
 
 
 "{{{
-"==============PLUGINS==================== 
+"==============PLUGINS====================
 "
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
@@ -30,11 +30,12 @@ filetype plugin indent on    " required
 
 "Close NERDTree on close of last pane/tab/window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 "}}}
 
 
 "{{{
-"==============AESTHETICS==================== 
+"==============AESTHETICS====================
 
 ""gutter colors
 "highlight LineNr ctermfg=grey ctermbg=white
@@ -47,7 +48,7 @@ let g:airline_theme = 'jellybeans'
 "}}}
 
 "{{{
-"==============FUNCTIONS==================== 
+"==============FUNCTIONS====================
 
 "{{{ Open URL in browser
 function! Browser ()
@@ -96,6 +97,11 @@ endfunction
 "{{{
 "===============SETTINGS==================
 
+"Folding Stuffs
+set foldmethod=marker
+"set foldlevel=1
+"set foldclose=all
+
 "show line numbers in gutter
 set number
 set showmatch
@@ -111,7 +117,7 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 
-"Ignoring case 
+"Ignoring case
 set ignorecase
 
 "And so is Artificial Intellegence!
@@ -130,13 +136,7 @@ set laststatus=2
 "set backup
 "set backupdir=~/.vim/backup
 "set directory=~/.vim/tmp
-
-" Manual line folding
-"set foldmethod=syntax
-"set foldlevel=1
-"set foldclose=all
 "}}}
-
 
 "{{{
 "===============MAPPINGS==================
@@ -171,11 +171,11 @@ imap jj <C-[>
 nore ; :
 nore , ;
 
-"Easier split navigation                                                                                                                               
+"Easier split navigation
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
-nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
-nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 "don't skip wrapped lines
@@ -204,7 +204,7 @@ map <C-n> :NERDTreeToggle<CR>
 iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
 iab MoN January February March April May June July August September October November December
 iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-iab NuM 12345678901234567890123456789012345678901234567890123456789012345678901234567890 
+iab NuM 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 iab RuL ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
 "}}}
 
