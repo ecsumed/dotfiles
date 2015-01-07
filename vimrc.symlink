@@ -5,6 +5,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+"==============PLUGINS==================== 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
@@ -17,10 +18,10 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 
-" Put your non-Plugin stuff after this line
+"non-Plugin stuff after this line
 
-"--------------colors--------------------
-"gutter colors
+"==============COLORS==================== 
+""gutter colors
 "highlight LineNr ctermfg=grey ctermbg=white
 
 " font/colorscheme options "
@@ -29,26 +30,79 @@ set t_Co=256
 colorscheme jellybeans
 let g:airline_theme = 'jellybeans'
 
-"---------------functions------------------
+
+"===============SETTINGS==================
+"show line numbers in gutter
 set nu
 set showmatch
 
-" do not wrap long lines by default
-set nowrap
-
+"new line indent same as previous one
 set autoindent
+
+"spaces in place of tabs character
+set expandtab
+set smarttab
+
+"no 8 space tabs, makes code compact
+set shiftwidth=4
+set softtabstop=4
+
+"highlight search results
+set hlsearch
+
+"Backupfiles and temp files all in one place
+"set backup
+"set backupdir=~/.vim/backup
+"set directory=~/.vim/tmp
 
 " Manual line folding
 "set foldmethod=syntax
 "set foldlevel=1
 "set foldclose=all
-"
+
+"===============MAPPINGS==================
+"probably the most used key, 'jj' to escape from insert mode
+"decreases pinky pain
+imap jj <C-[>
+
+"probably the second most used key, one key stroke less
+nore ; :
+nore , ;
+
+"Easier split navigation                                                                                                                               
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
+nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
+nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-l> :wincmd l<CR>
+
+"don't skip wrapped lines
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+inoremap <silent> <Up> <Esc>gka
+inoremap <silent> <Down> <Esc>gja
+
+"Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
+
+"Space will toggle folds!
+nnoremap <space> za
+
+"These will make it so that going to the next one in a
+"search will center on the line it's found in.
+map N Nzz
+map n nzz
+
+"pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
+"and magic...
+iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
+iab MoN January February March April May June July August September October November December
+iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+iab NuM 12345678901234567890123456789012345678901234567890123456789012345678901234567890 
+iab RuL ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
 
 "--------------NERDTree-------------------
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinPos = "right"
-
-"------------------status-line--------------
-set laststatus=2
-set statusline+=%F
