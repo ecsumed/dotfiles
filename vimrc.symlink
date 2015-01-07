@@ -5,7 +5,10 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
+"{{{
 "==============PLUGINS==================== 
+"
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
@@ -16,11 +19,23 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+"}}}
 
 
-"non-Plugin stuff after this line
+"=====non-Plugin stuff after this line====
 
-"==============COLORS==================== 
+
+"{{{
+"==============AUTOCOMMANDS====================
+
+"Close NERDTree on close of last pane/tab/window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"}}}
+
+
+"{{{
+"==============AESTHETICS==================== 
+
 ""gutter colors
 "highlight LineNr ctermfg=grey ctermbg=white
 
@@ -29,11 +44,60 @@ set background=dark
 set t_Co=256
 colorscheme jellybeans
 let g:airline_theme = 'jellybeans'
+"}}}
 
+"{{{
+"==============FUNCTIONS==================== 
 
+"{{{ Open URL in browser
+function! Browser ()
+   let line = getline (".")
+   let line = matchstr (line, "http[^   ]*")
+   exec "!konqueror ".line
+endfunction
+"}}}
+
+"{{{ Paste Toggle
+let paste_mode = 0 " 0 = normal, 1 = paste
+
+func! Paste_on_off()
+   if g:paste_mode == 0
+      set paste
+      let g:paste_mode = 1
+   else
+      set nopaste
+      let g:paste_mode = 0
+   endif
+   return
+endfunc
+"}}}
+
+"{{{ Theme Rotating
+let themeindex=0
+function! RotateColorTheme()
+   let y = -1
+   while y == -1
+      let colorstring = "jellybeans#badwolf#gruvbox#kolor#molokai#solarized#"
+      let x = match( colorstring, "#", g:themeindex )
+      let y = match( colorstring, "#", x + 1 )
+      let g:themeindex = x + 1
+      if y == -1
+         let g:themeindex = 0
+      else
+         let themestring = strpart(colorstring, x + 1, y - x - 1)
+         return ":colorscheme ".themestring
+      endif
+   endwhile
+endfunction
+"}}}
+
+"}}}
+
+"{{{
 "===============SETTINGS==================
+
 "show line numbers in gutter
-set nu
+set number
 set showmatch
 
 "new line indent same as previous one
@@ -47,8 +111,20 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 
+"Ignoring case 
+set ignorecase
+
+"And so is Artificial Intellegence!
+set smartcase
+
 "highlight search results
 set hlsearch
+
+"Incremental searching
+set incsearch
+
+"Start with Airline enabled
+set laststatus=2
 
 "Backupfiles and temp files all in one place
 "set backup
@@ -59,13 +135,39 @@ set hlsearch
 "set foldmethod=syntax
 "set foldlevel=1
 "set foldclose=all
+"}}}
 
+
+"{{{
 "===============MAPPINGS==================
+
+"Open Url on this line with the browser \w
+map <Leader>w :call Browser ()<CR>
+
+"Toggle Paste Mode <F10>
+nnoremap <silent> <F10> :call Paste_on_off()<CR>
+set pastetoggle=<F10>
+
+"Rotate Color Scheme <F8>
+nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
+
+"Next Tab
+nnoremap <silent> <C-Right> :tabnext<CR>
+"
+"Previous Tab
+nnoremap <silent> <C-Left> :tabprevious<CR>
+"
+"New Tab
+nnoremap <silent> <C-t> :tabnew<CR>
+
+"Edit vimrc \ev
+nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
+
 "probably the most used key, 'jj' to escape from insert mode
 "decreases pinky pain
 imap jj <C-[>
 
-"probably the second most used key, one key stroke less
+"the second most used key, one key stroke less
 nore ; :
 nore , ;
 
@@ -94,6 +196,9 @@ nnoremap <space> za
 map N Nzz
 map n nzz
 
+"Toggle NERDTree View
+map <C-n> :NERDTreeToggle<CR>
+
 "pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
 "and magic...
 iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -101,8 +206,6 @@ iab MoN January February March April May June July August September October Nove
 iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 iab NuM 12345678901234567890123456789012345678901234567890123456789012345678901234567890 
 iab RuL ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+"}}}
 
-"--------------NERDTree-------------------
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinPos = "right"
