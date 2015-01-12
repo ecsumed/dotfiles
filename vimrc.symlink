@@ -2,32 +2,11 @@
 "users. There is alot of other cool stuff out there. This is just
 "what I need and use.
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-
-"{{{
-"==============PLUGINS==================== 
-"
-Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'klen/python-mode'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"}}}
-
-
-"=====non-Plugin stuff after this line====
-
+"set nocompatible              " be iMproved, required
+"filetype off                  " required
 
 "{{{
 "==============AUTOCOMMANDS====================
