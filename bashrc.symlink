@@ -250,7 +250,7 @@ else
 fi
 
 # Line continuation
-PS2="\[$BGreen\]>"
+PS2="\[$BGreen\]> \[$NC\]"
 
 unset color_prompt force_color_prompt
 
