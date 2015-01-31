@@ -215,44 +215,10 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 # }}} 
 
-# {{{ 
-#=========================VISUAL OUPTPUT========================
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    if [ $(id -u) -eq 0 ]; then # check if root
-            PS1="\[$BRed\][\T]\u@\h:\w\[$BCyan\]\`parse_git_branch\`\n\[$BRed\]\$ \[$NC\]"
-        else
-            PS1="\[\e[1;32m\][\[\e[m\]\[\e[1;32m\]\T\[\e[m\]\[\e[1;32m\]]\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]\[\e[1;32m\]:\[\e[1;37m\]\w\[\e[1;31m\]\`parse_git_branch\`\[\e[m\]\[\e[1;32m\]\\$\[\e[m\] "
-        fi
+PS1="\[\e[1;32m\][\[\e[m\]\[\e[1;32m\]\T\[\e[m\]\[\e[1;32m\]]\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]\[\e[1;32m\]:\[\e[1;37m\]\w\[\e[1;31m\]\`parse_git_branch\`\[\e[m\]\[\e[1;32m\]\\$\[\e[m\] "
     #PS1="\[$BGreen\][\T]\u@\h:\[$BWhite\]\w\[$BRed\]\`parse_git_branch\`\[$BGreen\]\n\$ \[$NC\]"
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-
-# Line continuation
 PS2="\[$BGreen\]> \[$NC\]"
 
-unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -273,19 +239,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
-## Alias definitions.
-## You may want to put all your additions into a separate file like
-## ~/.bash_aliases, instead of adding them here directly.
-## See /usr/share/doc/bash-doc/examples in the bash-doc package.
-#
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
