@@ -242,7 +242,7 @@ if [ "$color_prompt" = yes ]; then
     if [ $(id -u) -eq 0 ]; then # check if root
             PS1="\[$BRed\][\T]\u@\h:\w\[$BCyan\]\`parse_git_branch\`\n\[$BRed\]\$ \[$NC\]"
         else
-            PS1="\[$BGreen\][\T]\u@\h:\[$BWhite\]\w\[$BRed\]\`parse_git_branch\`\[$BGreen\]\n\$ \[$NC\]"
+            PS1="\[\e[1;32m\][\[\e[m\]\[\e[1;32m\]\T\[\e[m\]\[\e[1;32m\]]\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]\[\e[1;32m\]:\[\e[1;37m\]\w\[\e[1;31m\]\`parse_git_branch\`\[\e[m\]\[\e[1;32m\]\\$\[\e[m\] "
         fi
     #PS1="\[$BGreen\][\T]\u@\h:\[$BWhite\]\w\[$BRed\]\`parse_git_branch\`\[$BGreen\]\n\$ \[$NC\]"
 else
