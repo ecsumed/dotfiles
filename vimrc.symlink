@@ -12,7 +12,8 @@ execute pathogen#infect()
 "==============AUTOCOMMANDS====================
 
 "Close NERDTree on close of last pane/tab/window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+ \ && b:NERDTreeType == "primary") | q | endif
 "}}}
 
 
