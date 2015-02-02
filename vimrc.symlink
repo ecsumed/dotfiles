@@ -31,6 +31,14 @@ let g:airline_theme = 'jellybeans'
 
 " visual cue for long lines
 highlight OverLength ctermbg=red ctermfg=white 
+
+" indent guides
+set ts=4 sw=4 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+" NERDTree positioning
+let g:NERDTreeWinPos = "right"
 "}}}
 
 "{{{
@@ -79,7 +87,8 @@ endfunction
 "}}}
 
 
-"{{{ avoiding long lines
+"{{{ Other functions 
+" avoiding long lines
 match OverLength /\%81v.\+/
 "}}}
 
@@ -165,11 +174,11 @@ imap jj <C-[>
 nore ; :
 nore , ;
 
-"Easier split navigation                                                                                                                               
+"Easier split navigation                     
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
-nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
-nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-k> :wincmd k<CR>            
+nmap <silent> <c-j> :wincmd j<CR>            
+nmap <silent> <c-h> :wincmd h<CR>            
 nmap <silent> <c-l> :wincmd l<CR>
 
 "don't skip wrapped lines
@@ -196,10 +205,12 @@ map <C-n> :NERDTreeToggle<CR>
 "pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
 "and magic...
 iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
-iab MoN January February March April May June July August September October November December
-iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-iab NuM 12345678901234567890123456789012345678901234567890123456789012345678901234567890 
-iab RuL ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+iab MoN January February March April May June July
+    \ August September October November December
+iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar
+    \ Apr May Jun Jul Aug Sep Oct Nov Dec
+iab NuM 123456789012345678901234567890123456789
+    \ 01234567890123456789012345678901234567890 
+iab RuL ----+----1----+----2----+----3----+----
+    \ 4----+----5----+----6----+----7----+----8----+----9----+----0
 "}}}
-
-let g:NERDTreeWinPos = "right"
