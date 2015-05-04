@@ -43,6 +43,10 @@ set-option -g pane-active-border-fg colour240 #base01
 set-option -g prefix C-a
 bind-key C-a last-window
 
+# Moving around copy mode using vim key movement
+setw -g mode-keys vi
+
+
 ## Start numbering at 1
 #set -g base-index 1
 #
