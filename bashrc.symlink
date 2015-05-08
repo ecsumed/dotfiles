@@ -181,6 +181,8 @@ alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+
+alias tmux='tmux -2'       # for tmux color suppport
 # }}}
 
 # If not running interactively, don't do anything
