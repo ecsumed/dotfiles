@@ -30,7 +30,8 @@ colorscheme jellybeans
 let g:airline_theme = 'jellybeans'
 
 " visual cue for long lines
-highlight OverLength ctermbg=red ctermfg=white 
+" highlight OverLength ctermbg=red ctermfg=white 
+highlight OverLength ctermbg=gray ctermfg=black
 
 " indent guides
 set ts=4 sw=4 et
