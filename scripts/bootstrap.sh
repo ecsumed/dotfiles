@@ -124,12 +124,18 @@ install_dotfiles () {
   local overwrite_all=false backup_all=false skip_all=false
 
   #all files in home directory
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 1 -name '*.symlink')
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
  
+}
+
+install_configfiles() {
+  info 'installing config files'
+
+  local overwrite_all=false backup_all=false skip_all=false
   #all .config files
   for src in $(find "$DOTFILES_ROOT/.config" -maxdepth 1 -name '*.symlink')
   do
@@ -138,8 +144,15 @@ install_dotfiles () {
   done
 }
 
+install_pip_dependencies () {
+  info 'installing pip dependencies'
+    pip install -r "$DOTFILES_ROOT/requirements.txt"
+}
+
 # setup_gitconfig
+# install_configfiles
 install_dotfiles
+install_pip_dependencies
 
 echo ''
 echo '  All installed!'
