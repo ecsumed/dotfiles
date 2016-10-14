@@ -146,10 +146,10 @@ install_configfiles() {
 
 install_pip_dependencies () {
   info 'installing pip dependencies'
-    pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
+  pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
 }
 
-setup_gitconfig
+# setup_gitconfig
 # install_configfiles
 install_dotfiles
 install_pip_dependencies
