@@ -134,7 +134,7 @@ set laststatus=2
 
 " Manual line folding
 set foldmethod=syntax
-set foldlevel=1
+set foldlevel=99
 set foldclose=all
 
 " Set mode line, check by -> :verbose set modeline? if not working
