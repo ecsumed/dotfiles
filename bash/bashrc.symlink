@@ -76,6 +76,23 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
 alias tmux='tmux -2'       # for tmux color suppport
 
+alias sshid='ssh -i ~/.ssh/id_rsa'
+alias sshcng='ssh -i ~/.ssh/id_rsa'
+alias sshidusdns='ssh -i ~/.ssh/id_rsa -C -p61 107.168.129.2'
+alias sshidukdns='ssh -i ~/.ssh/id_rsa -C -p61 46.23.70.70'
+alias sshidmydo='ssh -p61 -i ~/.ssh/id_rsa_myDO myDO'
+
+alias vproxytunnel='ssh -i ~/.ssh/id_rsa -NfD 1080 -p61 cw-devs@52.23.145.178'
+
+alias vproxysensu='vproxy 52.71.89.40'
+alias vproxysensu2='vproxy 52.4.64.101'
+alias vproxyveremis='vproxy 52.70.0.223'
+alias vproxystaging='vproxy 52.21.0.48'
+alias vproxyapi='vproxy 54.85.213.165'
+alias vproxyapi2='vproxy 52.5.120.0'
+
+alias tmux='tmux -2'       # for tmux color suppport
+  
 # my external ip
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # }}}
@@ -86,7 +103,7 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # Settings {{{ 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
-HISTIGNORE='ls*:cd*:exit:clear'
+HISTIGNORE='ls*:exit:clear:weather *'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
