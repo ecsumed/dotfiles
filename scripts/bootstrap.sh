@@ -28,7 +28,7 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
+  if [ -f git/gitconfig.symlink ]
   then
     info 'setup gitconfig'
 
@@ -37,7 +37,7 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example | cat - git/gitconfig.symlink > temp && mv temp git/gitconfig.symlink || fail 'error setting up git config'
 
     success 'gitconfig'
   fi
@@ -124,12 +124,18 @@ install_dotfiles () {
   local overwrite_all=false backup_all=false skip_all=false
 
   #all files in home directory
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 1 -name '*.symlink')
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
  
+}
+
+install_configfiles() {
+  info 'installing config files'
+
+  local overwrite_all=false backup_all=false skip_all=false
   #all .config files
   for src in $(find "$DOTFILES_ROOT/.config" -maxdepth 1 -name '*.symlink')
   do
@@ -138,8 +144,15 @@ install_dotfiles () {
   done
 }
 
-# setup_gitconfig
+install_pip_dependencies () {
+  info 'installing pip dependencies'
+    pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
+}
+
+setup_gitconfig
+# install_configfiles
 install_dotfiles
+install_pip_dependencies
 
 echo ''
 echo '  All installed!'
