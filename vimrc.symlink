@@ -1,17 +1,11 @@
-"Most of the stuff is borrowed from other (read 'more creative')
-"users. There is alot of other cool stuff out there. This is just
-"what I need and use.
-
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-    "set nocompatible              " be iMproved, required
-"filetype off                  " required
+" set nocompatible              " be iMproved, required
+" filetype off                  " required
 
-"{{{
-"==============PLUGIN SETTINGS====================
-
-"Syntastic settings
+" PLUGIN SETTINGS {{{
+" Syntastic settings
 let g:syntastic_python_checkers = ['python', 'flake8']
 
 set statusline+=%#warningmsg#
@@ -22,21 +16,16 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"}}}
+" }}}
 
-"{{{
-"==============AUTOCOMMANDS====================
-
+" AUTOCOMMANDS {{{
 "Close NERDTree on close of last pane/tab/window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
  \ && b:NERDTreeType == "primary") | q | endif
-"}}}
+" }}}
 
-
-"{{{
-"==============AESTHETICS==================== 
-
-""gutter colors
+" AESTHETICS {{{
+"gutter colors
 "highlight LineNr ctermfg=grey ctermbg=white
 
 " font/colorscheme options "
@@ -58,20 +47,17 @@ let g:indent_guides_guide_size = 1
 let g:NERDTreeWinPos = "right"
 
 set wildmenu
-"}}}
+" }}}
 
-"{{{
-"==============FUNCTIONS==================== 
-
-"{{{ Open URL in browser
+" FUNCTIONS {{{ 
+" Open URL in browser
 function! Browser ()
    let line = getline (".")
    let line = matchstr (line, "http[^   ]*")
    exec "!konqueror ".line
 endfunction
-"}}}
 
-"{{{ Paste Toggle
+" Paste Toggle
 let paste_mode = 0 " 0 = normal, 1 = paste
 
 func! Paste_on_off()
@@ -84,9 +70,8 @@ func! Paste_on_off()
    endif
    return
 endfunc
-"}}}
 
-"{{{ Theme Rotating
+" Rotate theme
 let themeindex=0
 function! RotateColorTheme()
    let y = -1
@@ -103,18 +88,12 @@ function! RotateColorTheme()
       endif
    endwhile
 endfunction
-"}}}
 
-
-"{{{ Other functions 
 " avoiding long lines
 match OverLength /\%81v.\+/
-"}}}
+" }}}
 
-"}}}
-
-"{{{
-"===============SETTINGS==================
+" SETTINGS {{{ 
 "show line numbers in gutter
 set number
 set showmatch
@@ -154,75 +133,76 @@ set laststatus=2
 "set directory=~/.vim/tmp
 
 " Manual line folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=1
 set foldclose=all
-"}}}
 
+" Set mode line, check by -> :verbose set modeline? if not working
+" some distros disable by default
+set modelines=1
+" }}}
 
-"{{{
-"===============MAPPINGS==================
-
-"Open Url on this line with the browser \w
+" Mappings {{{
+" Open Url on this line with the browser \w
 map <Leader>w :call Browser ()<CR>
 
-"Toggle Paste Mode <F10>
+" Toggle Paste Mode <F10>
 nnoremap <silent> <F10> :call Paste_on_off()<CR>
 set pastetoggle=<F10>
 
-"Rotate Color Scheme <F8>
+" Rotate Color Scheme <F8>
 nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
-"Next Tab
+" Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
-"
-"Previous Tab
+ 
+" Previous Tab
 nnoremap <silent> <C-Left> :tabprevious<CR>
 "
-"New Tab
+" New Tab
 nnoremap <silent> <C-t> :tabnew<CR>
 
-"Edit vimrc \ev
+" Edit vimrc \ev
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 
-"probably the most used key, 'jj' to escape from insert mode
+" probably the most used key, 'jj' to escape from insert mode
 "decreases pinky pain
 imap jj <C-[>
 
-"the second most used key, one key stroke less
+" the second most used key, one key stroke less
 nore ; :
 nore , ;
 
-"Easier split navigation                     
+" Easier split navigation                     
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>            
 nmap <silent> <c-j> :wincmd j<CR>            
 nmap <silent> <c-h> :wincmd h<CR>            
 nmap <silent> <c-l> :wincmd l<CR>
 
-"don't skip wrapped lines
+" don't skip wrapped lines
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 inoremap <silent> <Up> <Esc>gka
 inoremap <silent> <Down> <Esc>gja
 
-"Create Blank Newlines and stay in Normal mode
+" Create Blank Newlines and stay in Normal mode
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
-"Space will toggle folds!
+" Space will toggle folds!
 nnoremap <space> za
 
-"These will make it so that going to the next one in a
-"search will center on the line it's found in.
+" These will make it so that going to the next one in a
+" search will center on the line it's found in.
 map N Nzz
 map n nzz
 
-"Toggle NERDTree View
+" Toggle NERDTree View
 map <C-n> :NERDTreeToggle<CR>
 
-"pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
-"and magic...
+" pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
+" and magic...
 iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
 iab MoN January February March April May June July
     \ August September October November December
@@ -232,4 +212,6 @@ iab NuM 123456789012345678901234567890123456789
     \ 01234567890123456789012345678901234567890 
 iab RuL ----+----1----+----2----+----3----+----
     \ 4----+----5----+----6----+----7----+----8----+----9----+----0
-"}}}
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
