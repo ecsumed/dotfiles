@@ -75,6 +75,9 @@ alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
 alias tmux='tmux -2'       # for tmux color suppport
+
+# my external ip
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # }}}
 
 # If not running interactively, don't do anything
