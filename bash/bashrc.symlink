@@ -77,6 +77,7 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias tmux='tmux -2'       # for tmux color suppport
 
 alias cdcloud='cd /home/fahad/Workpace/Cloudways/'
+alias cdsmart='cd /home/fahad/Workpace/SmartDNS/'
 
 alias sshid='ssh -i ~/.ssh/id_rsa'
 alias sshcng='ssh -i ~/.ssh/id_rsa'
