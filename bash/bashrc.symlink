@@ -108,7 +108,7 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # Settings {{{ 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
-HISTIGNORE='ls*:exit:clear:weather *:vproxy*'
+HISTIGNORE='ls*:exit:clear:weather *'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
