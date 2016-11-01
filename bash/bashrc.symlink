@@ -78,6 +78,9 @@ alias tmux='tmux -2'       # for tmux color suppport
 
 # my external ip
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# execute last command with sudo 
+alias fuck='sudo $(history -p \!\!)'
 # }}}
 
 # If not running interactively, don't do anything
