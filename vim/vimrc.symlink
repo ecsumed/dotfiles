@@ -201,6 +201,10 @@ map n nzz
 " Toggle NERDTree View
 map <C-n> :NERDTreeToggle<CR>
 
+" Converts a series of visually selected lines into a single line consisting
+" of a python list by adding quotes and square brackets.
+vmap pyl :s!^!"!<CR>gv:s!$!",!<CR>gvJI[<Esc>A<BS>]<Esc>I
+
 " pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
 " and magic...
 iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
