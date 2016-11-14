@@ -86,7 +86,7 @@ alias sshid='ssh -i ~/.ssh/id_rsa'
 alias sshcng='ssh -i ~/.ssh/id_rsa'
 alias sshidusdns='ssh -i ~/.ssh/id_rsa -C -p61 107.168.129.2'
 alias sshidukdns='ssh -i ~/.ssh/id_rsa -C -p61 46.23.70.70'
-alias sshidmydo='ssh -p61 -i ~/.ssh/id_rsa_myDO myDO'
+alias sshidmydo='ssh -p61 -i ~/.ssh/id_rsa_myDO fahad@104.236.10.170'
 
 alias vproxytunnel='ssh -i ~/.ssh/id_rsa -NfD 1080 -p61 cw-devs@52.23.145.178'
 
