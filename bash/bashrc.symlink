@@ -90,6 +90,7 @@ alias sshidmydo='ssh -p61 -i ~/.ssh/id_rsa_myDO fahad@104.236.10.170'
 
 alias vproxytunnel='ssh -i ~/.ssh/id_rsa -NfD 1080 -p61 cw-devs@52.23.145.178'
 
+alias vproxyrabbit='vproxy 52.73.108.199'
 alias vproxysensu='vproxy 52.71.89.40'
 alias vproxysensu2='vproxy 52.4.64.101'
 alias vproxyveremis='vproxy 52.70.0.223'
