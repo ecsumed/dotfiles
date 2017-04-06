@@ -89,6 +89,15 @@ function! RotateColorTheme()
    endwhile
 endfunction
 
+function! ToggleErrors()
+    if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
+         " No location/quickfix list shown, open syntastic error location panel
+        Errors
+    else
+        lclose
+    endif
+endfunction
+
 " avoiding long lines
 match OverLength /\%81v.\+/
 " }}}
@@ -145,6 +154,9 @@ set modelines=1
 " Mappings {{{
 " Open Url on this line with the browser \w
 map <Leader>w :call Browser ()<CR>
+
+" Toggle Syntastic errors
+nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
 
 " Toggle Paste Mode <F10>
 nnoremap <silent> <F10> :call Paste_on_off()<CR>
