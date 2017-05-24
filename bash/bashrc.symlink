@@ -90,6 +90,9 @@ alias fuck='sudo $(history -p \!\!)'
 # local aliases
 source ~/.local.bashrc
 
+# k8 bash completion
+source <(kubectl completion bash)
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
