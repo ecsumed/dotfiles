@@ -124,7 +124,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 # }}} 
 
-PS1="\[\e[1;32m\][\[\e[m\]\[\e[1;32m\]\T\[\e[m\]\[\e[1;32m\]]\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]\[\e[1;32m\]:\[\e[1;37m\]\w\[\e[1;31m\]\`parse_git_branch\`\[\e[m\]\[\e[1;32m\]\\$\[\e[m\] "
+PS1="\n\[\e[1;32m\][\[\e[m\]\[\e[1;32m\]\T\[\e[m\]\[\e[1;32m\]]\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]\[\e[1;32m\]:\[\e[1;37m\]\w\[\e[1;31m\]\`parse_git_branch\`\[\e[m\]\[\e[1;32m\]\n\\$\[\e[m\] "
     #PS1="\[$BGreen\][\T]\u@\h:\[$BWhite\]\w\[$BRed\]\`parse_git_branch\`\[$BGreen\]\n\$ \[$NC\]"
 PS2="\[$BGreen\]> \[$NC\]"
 
