@@ -128,7 +128,8 @@ fi
 # Bold "\[$(tput bold)\]"
 # Green Color "\[$(tput setaf 2)\]"
 
-PS1="\n\[$(tput bold)\]\[$(tput setaf 2)\]\u@\h:\[$(tput sgr0)\]"\
+PS1="\n\[$(tput bold)\]\[$(tput setaf 250)\][\t]\[$(tput sgr0)\]"\
+"\[$(tput bold)\]\[$(tput setaf 2)\]\u@\h:\[$(tput sgr0)\]"\
 "\[$(tput bold)\]\[$(tput setaf 7)\]\w\[$(tput sgr0)\]"\
 "\[$(tput bold)\]\[$(tput setaf 1)\]\`parse_git_branch\`\[$(tput sgr0)\]"\
 "\[$(tput bold)\]\[$(tput setaf 2)\]\n\$\[$(tput sgr0)\] "
