@@ -43,6 +43,7 @@ highlight OverLength ctermbg=gray ctermfg=black
 
 " indent guides
 set ts=4 sw=4 et
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
@@ -50,6 +51,13 @@ let g:indent_guides_guide_size = 1
 let g:NERDTreeWinPos = "right"
 
 set wildmenu
+
+set cursorline
+"hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"autocmd InsertEnter * highlight CursorLine guifg=white guibg=blue ctermfg=white ctermbg=blue
+"autocmd InsertLeave * highlight CursorLine guifg=white guibg=darkblue ctermfg=white ctermbg=darkblue
 " }}}
 
 " FUNCTIONS {{{ 
@@ -157,6 +165,9 @@ set modelines=1
 " Mappings {{{
 " Open Url on this line with the browser \w
 map <Leader>w :call Browser ()<CR>
+
+" Toggle Tagbar with \b
+nnoremap <Leader>b :TagbarToggle<CR>
 
 " Toggle Syntastic errors
 nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
