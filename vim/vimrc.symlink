@@ -34,8 +34,8 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 " font/colorscheme options "
 set background=dark
 set t_Co=256
-colorscheme jellybeans
-let g:airline_theme = 'jellybeans'
+colorscheme kolor
+let g:airline_theme = 'kolor'
 
 " visual cue for long lines
 " highlight OverLength ctermbg=red ctermfg=white 
@@ -56,8 +56,6 @@ set cursorline
 "hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"autocmd InsertEnter * highlight CursorLine guifg=white guibg=blue ctermfg=white ctermbg=blue
-"autocmd InsertLeave * highlight CursorLine guifg=white guibg=darkblue ctermfg=white ctermbg=darkblue
 " }}}
 
 " FUNCTIONS {{{ 
