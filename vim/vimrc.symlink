@@ -37,6 +37,9 @@ set t_Co=256
 colorscheme kolor
 let g:airline_theme = 'kolor'
 
+" Airline tabs
+let g:airline#extensions#tabline#enabled = 1
+
 " visual cue for long lines
 " highlight OverLength ctermbg=red ctermfg=white 
 highlight OverLength ctermbg=gray ctermfg=black
