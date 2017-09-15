@@ -149,10 +149,16 @@ install_pip_dependencies () {
   pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
 }
 
+install_apt_dependencies () {
+  info 'installing apt dependencies'
+  sudo apt-get install exuberant-ctags -y
+}
+
 # setup_gitconfig
 # install_configfiles
 install_dotfiles
 install_pip_dependencies
+install_apt_dependencies
 
 echo ''
 echo '  All installed!'
