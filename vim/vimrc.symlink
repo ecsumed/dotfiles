@@ -53,6 +53,7 @@ let g:NERDTreeWinPos = "right"
 set wildmenu
 
 set cursorline
+highlight CursorLine gui=underline cterm=underline
 "hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
