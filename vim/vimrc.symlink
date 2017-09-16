@@ -150,13 +150,15 @@ set scrolloff=5
 "Start with Airline enabled
 set laststatus=2
 
-"Backupfiles and temp files all in one place
-"set backup
-"set backupdir=~/.vim/backup
-"set directory=~/.vim/tmp
+" No backup files
+" Disable stupid backup and swap files - they trigger too many events
+" for file system watchers
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Manual line folding
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=99
 set foldclose=all
 
@@ -201,6 +203,12 @@ imap jj <C-[>
 " the second most used key, one key stroke less
 nore ; :
 nore , ;
+
+" easier moving of code blocks
+" Try to go into visual mode (v), thenselect several lines of code here and
+" then press ``>`` several times.
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation"
 
 " Easier split navigation                     
 " Use ctrl-[hjkl] to select the active split!
