@@ -85,6 +85,12 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # execute last command with sudo 
 alias fuck='sudo $(history -p \!\!)'
+
+# cd shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../../"
+alias .....="cd ../../../.."
 # }}}
 
 # local aliases
