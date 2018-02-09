@@ -212,4 +212,42 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 # }}} 
 
+
+
+
+
+####### function Color() {
+#######   echo "\[$(tput setaf $1)\]"
+####### }
+####### function ResetColor() {
+#######   echo "\[$(tput sgr0)\]"
+####### }
+####### 
+####### 
+####### # now you can add it to your prompt like this:
+####### # function which configures the prompet...
+####### function BashPrompt() {
+#######     local last_status=$?
+#######     local reset=$(ResetColor)
+####### 
+#######     local failure="✘"
+#######     local success="✔"
+####### 
+#######     if [[ "$last_status" != "0" ]]; then
+#######         last_status="$(Color 5)$failure$reset"
+#######     else
+#######         last_status="$(Color 2)$success$reset"
+#######     fi
+####### 
+#######     # ...some other things like hostname, current git branch etc
+####### 
+#######     echo "$last_status $current_branch $hostname :"
+####### }
+####### 
+####### # ...and the hook which updates the prompt whenever we run a command
+####### PROMPT_COMMAND='PS1=$(BashPrompt)'
+
+
+
+
 # vim:foldmethod=marker:foldlevel=0
