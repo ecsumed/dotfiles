@@ -125,6 +125,11 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../../"
 alias .....="cd ../../../.."
+
+# docker
+alias dockerkill="docker ps | awk '{print \$1}' | xargs docker kill"
+alias dockerclean="docker ps -a | awk '{print \$1}' | xargs -I '{}' docker rm {}"
+alias dockerexec='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti $1'
 # }}}
 
 # local aliases
