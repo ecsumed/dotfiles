@@ -6,7 +6,7 @@ BOLD="\[$(tput bold)\]"
 BGREEN="$BOLD\[$(tput setaf 2)\]"
 BWHITE="$BOLD\[$(tput setaf 7)\]"
 BRED="$BOLD\[$(tput setaf 1)\]"
-ORANGE="\[$(tput setaf 220)\]"
+ORANGE="$BOLD\[$(tput setaf 3)\]"
 
 # Functions {{{ 
 hr() {
