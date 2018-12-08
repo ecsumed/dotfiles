@@ -6,7 +6,7 @@ BOLD="\[$(tput bold)\]"
 BGREEN="$BOLD\[$(tput setaf 2)\]"
 BWHITE="$BOLD\[$(tput setaf 7)\]"
 BRED="$BOLD\[$(tput setaf 1)\]"
-ORANGE="$BOLD\[$(tput setaf 3)\]"
+ORANGE="$BOLD\[$(tput setaf 147)\]"
 
 # Functions {{{ 
 hr() {
@@ -16,7 +16,7 @@ hr() {
     local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
     local cols=${COLUMNS:-$(tput cols)}
     while ((${#line} < cols)); do line+="$line"; done
-    printf '\n%s%s%s' "$start" "${line:0:cols-10}" "$end"
+    printf '%s%s%s' "$start" "${line:0:cols-11}" "$end"
 }
 
 function BashPrompt() {
@@ -43,7 +43,7 @@ function BashPrompt() {
 
     command_dollar="$BGREEN\$$RESET "
 
-    echo "$h_line\n$main_line\n$last_status$command_dollar"
+    echo "\n╭$h_line\n│$main_line\n╰$last_status$command_dollar"
 }
 
 # get current branch in git repo 
@@ -120,8 +120,6 @@ alias la='ll -A'           #  Show hidden files.
 alias tmux='tmux -2'       # for tmux color suppport
 
 alias vimresolve='sudo vim /etc/resolv.conf'
-
-alias tmux='tmux -2'       # for tmux color suppport
   
 # my external ip
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -180,9 +178,10 @@ PROMPT_COMMAND='PS1=$(BashPrompt)'
 
 PS2="\[$BGreen\]> \[$NC\]"
 
-# If this is an xterm set the title to user@host:dir
 case "$TERM" in
+# If this is an xterm
 xterm*|rxvt*)
+    export TERM=xterm-256color
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
