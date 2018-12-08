@@ -6,13 +6,11 @@ BOLD="\[$(tput bold)\]"
 BGREEN="$BOLD\[$(tput setaf 2)\]"
 BWHITE="$BOLD\[$(tput setaf 7)\]"
 BRED="$BOLD\[$(tput setaf 1)\]"
-ORANGE="$BOLD\[$(tput setaf 147)\]"
+BPURPLE="$BOLD\[$(tput setaf 147)\]"
+BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
 
 # Functions {{{ 
 hr() {
-    #PS_LINE=`printf -- '- %0s' {1..200}`
-    #PS_FILL=${PS_LINE:0:$COLUMNS-10}
-    #echo "\n${PS_FILL}$ORANGE[\t]$RESET"
     local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
     local cols=${COLUMNS:-$(tput cols)}
     while ((${#line} < cols)); do line+="$line"; done
@@ -32,7 +30,7 @@ function BashPrompt() {
     fi
 
     # Add dotted line
-    h_line="$BWHITE$(hr)$ORANGE[\t]$RESET"
+    h_line="$BWHITE$(hr)$BPURPLE[\t]$RESET"
 
     # ...some other things like hostname, current git branch etc
     user_host="$BGREEN\u@\h$RESET:"
@@ -43,7 +41,7 @@ function BashPrompt() {
 
     command_dollar="$BGREEN\$$RESET "
 
-    echo "\n╭$h_line\n│$main_line\n╰$last_status$command_dollar"
+    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$command_dollar"
 }
 
 # get current branch in git repo 
