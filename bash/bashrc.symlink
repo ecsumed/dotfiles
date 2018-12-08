@@ -1,40 +1,47 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ecsumed
+
+# Used colors
+RESET="\[$(tput sgr0)\]"
+BOLD="\[$(tput bold)\]"
+BGREEN="$BOLD\[$(tput setaf 2)\]"
+BWHITE="$BOLD\[$(tput setaf 7)\]"
+BRED="$BOLD\[$(tput setaf 1)\]"
+BPURPLE="$BOLD\[$(tput setaf 147)\]"
+BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
 
 # Functions {{{ 
-
-# Fill with minuses
-function draw_lines {
-    # (this is recalculated every time the prompt is shown in function prompt_command):
-    fill="--- "
-    
-    reset_style='\[\033[00m\]'
-    if [ -z "$VIM" ];
-    then status_style=$reset_style'\[\033[0;17m\]' # gray color; use 0;37m for lighter color
-    else status_style=$reset_style'\[\033[0;90;107m\]'
-    fi
-    prompt_style=$reset_style
-    command_style=$reset_style'\[\033[0;29m\]' # bold black
-    # Prompt variable:
-    
-    OLD_PS1="$PS1"
-    PS1="\n$status_style"'$fill \t'"$prompt_style$OLD_PS1$command_style"
-    
-    # Reset color for command output
-    # (this one is invoked every time before a command is executed):
-    trap 'echo -ne "\e[0m"' DEBUG
+hr() {
+    local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
+    local cols=${COLUMNS:-$(tput cols)}
+    while ((${#line} < cols)); do line+="$line"; done
+    printf '%s%s%s' "$start" "${line:0:cols-11}" "$end"
 }
 
+function BashPrompt() {
+    local last_status=$?
 
-function prompt_command {
+    local failure="✘"
+    local success="✔"
 
-    # create a $fill of all screen width minus the time string and a space:
-    let fillsize=${COLUMNS}-9
-    fill=""
-    while [ "$fillsize" -gt "0" ]
-    do
-        fill="-${fill}" # fill with underscores to work on 
-        let fillsize=${fillsize}-1
-    done
+    if [[ "$last_status" != "0" ]]; then
+        last_status="$BRED($last_status)$failure$RESET"
+    else
+        last_status="$RESET"
+    fi
+
+    # Add dotted line
+    h_line="$BWHITE$(hr)$BPURPLE[\t]$RESET"
+
+    # ...some other things like hostname, current git branch etc
+    user_host="$BGREEN\u@\h$RESET:"
+    current_dir="$BWHITE\w$RESET"
+    git_status="$BRED$(parse_git_branch)$RESET"
+
+    main_line="$user_host$current_dir$git_status"
+
+    command_dollar="$BGREEN\$$RESET "
+
+    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$command_dollar"
 }
 
 # get current branch in git repo 
@@ -111,8 +118,6 @@ alias la='ll -A'           #  Show hidden files.
 alias tmux='tmux -2'       # for tmux color suppport
 
 alias vimresolve='sudo vim /etc/resolv.conf'
-
-alias tmux='tmux -2'       # for tmux color suppport
   
 # my external ip
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -166,32 +171,15 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 # }}} 
 
-# Reset "\[$(tput sgr0)\]"
-# Bold "\[$(tput bold)\]"
-# Green Color "\[$(tput setaf 2)\]"
-
-PS1="\n"\
-"\[$(tput bold)\]\[$(tput setaf 2)\]\u@\h:\[$(tput sgr0)\]"\
-"\[$(tput bold)\]\[$(tput setaf 7)\]\w\[$(tput sgr0)\]"\
-"\[$(tput bold)\]\[$(tput setaf 1)\]\`parse_git_branch\`\[$(tput sgr0)\]"\
-"\[$(tput bold)\]\[$(tput setaf 2)\]\n\$\[$(tput sgr0)\] "
-
-# PS1="\n\[$(tput bold)\]\[$(tput setaf 250)\][\t]\[$(tput sgr0)\]"\
-# "\[$(tput bold)\]\[$(tput setaf 2)\]\u@\h:\[$(tput sgr0)\]"\
-# "\[$(tput bold)\]\[$(tput setaf 7)\]\w\[$(tput sgr0)\]"\
-# "\[$(tput bold)\]\[$(tput setaf 1)\]\`parse_git_branch\`\[$(tput sgr0)\]"\
-# "\[$(tput bold)\]\[$(tput setaf 2)\]\n\$\[$(tput sgr0)\] "
-
+# ...and the hook which updates the prompt whenever we run a command
+PROMPT_COMMAND='PS1=$(BashPrompt)'
 
 PS2="\[$BGreen\]> \[$NC\]"
 
-draw_lines
-
-PROMPT_COMMAND=prompt_command
-
-# If this is an xterm set the title to user@host:dir
 case "$TERM" in
+# If this is an xterm
 xterm*|rxvt*)
+    export TERM=xterm-256color
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -212,43 +200,5 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 # }}} 
-
-
-
-
-
-####### function Color() {
-#######   echo "\[$(tput setaf $1)\]"
-####### }
-####### function ResetColor() {
-#######   echo "\[$(tput sgr0)\]"
-####### }
-####### 
-####### 
-####### # now you can add it to your prompt like this:
-####### # function which configures the prompet...
-####### function BashPrompt() {
-#######     local last_status=$?
-#######     local reset=$(ResetColor)
-####### 
-#######     local failure="✘"
-#######     local success="✔"
-####### 
-#######     if [[ "$last_status" != "0" ]]; then
-#######         last_status="$(Color 5)$failure$reset"
-#######     else
-#######         last_status="$(Color 2)$success$reset"
-#######     fi
-####### 
-#######     # ...some other things like hostname, current git branch etc
-####### 
-#######     echo "$last_status $current_branch $hostname :"
-####### }
-####### 
-####### # ...and the hook which updates the prompt whenever we run a command
-####### PROMPT_COMMAND='PS1=$(BashPrompt)'
-
-
-
 
 # vim:foldmethod=marker:foldlevel=0
