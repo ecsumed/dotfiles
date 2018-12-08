@@ -32,7 +32,7 @@ function BashPrompt() {
     fi
 
     # Add dotted line
-    h_line="$(hr)$ORANGE[\t]$RESET"
+    h_line="$BWHITE$(hr)$ORANGE[\t]$RESET"
 
     # ...some other things like hostname, current git branch etc
     user_host="$BGREEN\u@\h$RESET:"
