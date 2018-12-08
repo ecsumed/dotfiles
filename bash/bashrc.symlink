@@ -29,6 +29,14 @@ function BashPrompt() {
         last_status="$RESET"
     fi
 
+    if [ -z ${VIRTUAL_ENV+x} ]; then
+        py_env="$RESET";
+    else
+        env_name=$(basename $VIRTUAL_ENV)
+        py_env="$BWHITE($env_name)$RESET";
+    fi
+
+
     # Add dotted line
     h_line="$BWHITE$(hr)$BPURPLE[\t]$RESET"
 
@@ -41,7 +49,7 @@ function BashPrompt() {
 
     command_dollar="$BGREEN\$$RESET "
 
-    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$command_dollar"
+    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$py_env$command_dollar"
 }
 
 # get current branch in git repo 
