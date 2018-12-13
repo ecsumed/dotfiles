@@ -1,14 +1,5 @@
 # ecsumed
 
-# Used colors
-RESET="\[$(tput sgr0)\]"
-BOLD="\[$(tput bold)\]"
-BGREEN="$BOLD\[$(tput setaf 2)\]"
-BWHITE="$BOLD\[$(tput setaf 7)\]"
-BRED="$BOLD\[$(tput setaf 1)\]"
-BPURPLE="$BOLD\[$(tput setaf 147)\]"
-BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
-
 # Functions {{{ 
 hr() {
     local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
@@ -179,11 +170,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 # }}} 
 
-# ...and the hook which updates the prompt whenever we run a command
-PROMPT_COMMAND='PS1=$(BashPrompt)'
-
-PS2="\[$BGreen\]> \[$NC\]"
-
 case "$TERM" in
 # If this is an xterm
 xterm*|rxvt*)
@@ -193,6 +179,22 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# Need to set colors vars after 256 colors have been set. Otherwise
+# the >9 colors won't show and we'll have to source bashrc again.
+# Used colors
+RESET="\[$(tput sgr0)\]"
+BOLD="\[$(tput bold)\]"
+BGREEN="$BOLD\[$(tput setaf 2)\]"
+BWHITE="$BOLD\[$(tput setaf 7)\]"
+BRED="$BOLD\[$(tput setaf 1)\]"
+BPURPLE="$BOLD\[$(tput setaf 147)\]"
+BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
+
+# ...and the hook which updates the prompt whenever we run a command
+PROMPT_COMMAND='PS1=$(BashPrompt)'
+
+PS2="\[$BGreen\]> \[$NC\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
