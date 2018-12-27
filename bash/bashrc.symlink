@@ -185,7 +185,7 @@ esac
 # Used colors
 RESET="\[$(tput sgr0)\]"
 BOLD="\[$(tput bold)\]"
-BGREEN="$BOLD\[$(tput setaf 2)\]"
+BGREEN="$BOLD\[$(tput setaf 81)\]"
 BWHITE="$BOLD\[$(tput setaf 7)\]"
 BRED="$BOLD\[$(tput setaf 1)\]"
 BPURPLE="$BOLD\[$(tput setaf 147)\]"
