@@ -32,15 +32,15 @@ function BashPrompt() {
     h_line="$BWHITE$(hr)$BPURPLE[\t]$RESET"
 
     # ...some other things like hostname, current git branch etc
-    user_host="$BGREEN\u@\h$RESET:"
+    user_host="$BGREEN\u@\h$RESET * "
     current_dir="$BWHITE\w$RESET"
     git_status="$BRED$(parse_git_branch)$RESET"
 
-    main_line="$user_host$current_dir$git_status"
+    main_line="$user_host$current_dir"
 
-    command_dollar="$BGREEN\$$RESET "
+    command_dollar="$BGREEN >$RESET "
 
-    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$py_env$command_dollar"
+    echo "\n$BWHITE╭$h_line\n│$main_line\n$BWHITE╰$last_status$py_env$git_status$command_dollar"
 }
 
 # get current branch in git repo 
@@ -185,9 +185,9 @@ esac
 # Used colors
 RESET="\[$(tput sgr0)\]"
 BOLD="\[$(tput bold)\]"
-BGREEN="$BOLD\[$(tput setaf 81)\]"
-BWHITE="$BOLD\[$(tput setaf 7)\]"
-BRED="$BOLD\[$(tput setaf 1)\]"
+BGREEN="$BOLD\[$(tput setaf 214)\]"
+BWHITE="$BOLD\[$(tput setaf 117)\]"
+BRED="$BOLD\[$(tput setaf 184)\]"
 BPURPLE="$BOLD\[$(tput setaf 147)\]"
 BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
 
