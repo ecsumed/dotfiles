@@ -15,7 +15,7 @@ function BashPrompt() {
     local success="✔"
 
     if [[ "$last_status" != "0" ]]; then
-        last_status="$BRED($last_status)$failure$RESET"
+        last_status="$C_ERR_CODE($last_status)$failure$RESET"
     else
         last_status="$RESET"
     fi
@@ -24,23 +24,23 @@ function BashPrompt() {
         py_env="$RESET";
     else
         env_name=$(basename $VIRTUAL_ENV)
-        py_env="$BWHITE($env_name)$RESET";
+        py_env="$C_ENV_STATUS($env_name)$RESET";
     fi
 
 
     # Add dotted line
-    h_line="$BWHITE$(hr)$BPURPLE[\t]$RESET"
+    h_line="$C_LINE$(hr)$C_TIME[\t]$RESET"
 
     # ...some other things like hostname, current git branch etc
-    user_host="$BGREEN\u@\h$RESET ✯ "
-    current_dir="$BWHITE\w$RESET"
-    git_status="$BRED$(parse_git_branch)$RESET"
+    user_host="$C_HOST_USER\u@\h$RESET ✯ "
+    current_dir="$C_DIR\w$RESET"
+    git_status="$C_GIT_STATUS$(parse_git_branch)$RESET"
 
     main_line="$user_host$current_dir $git_status"
 
-    command_dollar="$BGREEN 〉$RESET"
+    command_dollar="$C_CMD_START 〉$RESET"
 
-    echo "\n$BWHITE╭$h_line\n$BWHITE│$main_line\n$BWHITE╰$last_status$py_env$command_dollar"
+    echo "\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
 }
 
 # get current branch in git repo 
@@ -185,11 +185,14 @@ esac
 # Used colors
 RESET="\[$(tput sgr0)\]"
 BOLD="\[$(tput bold)\]"
-BGREEN="$BOLD\[$(tput setaf 214)\]"
-BWHITE="$BOLD\[$(tput setaf 117)\]"
-BRED="$BOLD\[$(tput setaf 184)\]"
-BPURPLE="$BOLD\[$(tput setaf 147)\]"
-BLIGHTBLUE="$BOLD\[$(tput setaf 103)\]"
+C_ERR_CODE="$BOLD\[$(tput setaf 162)\]"
+C_HOST_USER="$BOLD\[$(tput setaf 214)\]"
+C_DIR="$BOLD\[$(tput setaf 147)\]"
+C_GIT_STATUS="$BOLD\[$(tput setaf 184)\]"
+C_ENV_STATUS="$BOLD\[$(tput setaf 211)\]"
+C_TIME="$BOLD\[$(tput setaf 147)\]"
+C_LINE="$BOLD\[$(tput setaf 88)\]"
+C_CMD_START="$BOLD\[$(tput setaf 214)\]"
 
 # ...and the hook which updates the prompt whenever we run a command
 PROMPT_COMMAND='PS1=$(BashPrompt)'
