@@ -40,7 +40,7 @@ function BashPrompt() {
 
     command_dollar="$C_CMD_START 〉$RESET"
 
-    echo "\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
+    echo "\[\e]0;\W\a\]\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
 }
 
 # get current branch in git repo 
@@ -191,7 +191,7 @@ C_DIR="$BOLD\[$(tput setaf 147)\]"
 C_GIT_STATUS="$BOLD\[$(tput setaf 184)\]"
 C_ENV_STATUS="$BOLD\[$(tput setaf 211)\]"
 C_TIME="$BOLD\[$(tput setaf 147)\]"
-C_LINE="$BOLD\[$(tput setaf 88)\]"
+C_LINE="$BOLD\[$(tput setaf 255)\]"
 C_CMD_START="$BOLD\[$(tput setaf 214)\]"
 
 # ...and the hook which updates the prompt whenever we run a command
