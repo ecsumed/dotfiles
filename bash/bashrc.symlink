@@ -40,7 +40,7 @@ function BashPrompt() {
 
     command_dollar="$C_CMD_START 〉$RESET"
 
-    echo "\[\e]0;\W\a\]\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
+    echo "\[\e]0;\w\a\]\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
 }
 
 # get current branch in git repo 
