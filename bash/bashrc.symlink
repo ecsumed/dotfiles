@@ -212,6 +212,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+if [ -f /home/fahad/.fzf-completions.bash ] && ! shopt -oq posix; then
+    . /home/fahad/.fzf-completions.bash
+fi
 # }}} 
 
 # vim:foldmethod=marker:foldlevel=0
