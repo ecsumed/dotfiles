@@ -22,8 +22,10 @@ let g:syntastic_check_on_wq = 0
 "CtrlP settings
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git)$',
-  \ 'file': '\v\.(pyc|gz|tar|log)$',
+  \ 'file': '\v\.(odt|gpg|jpg|png|xlsx|pyc|gz|tar|log)$',
   \ }
+
+let g:ctrlp_working_path_mode = 'r'
 " }}}
 
 " AUTOCOMMANDS {{{
