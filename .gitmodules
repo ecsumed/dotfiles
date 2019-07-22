@@ -31,3 +31,6 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/vim-misc"]
 	path = vim/vim.symlink/pack/git-plugins/start/vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/vim-airline-themes"]
+	path = vim/vim.symlink/pack/git-plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
