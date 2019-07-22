@@ -153,6 +153,8 @@ install_apt_dependencies () {
   info 'installing apt dependencies'
   sudo apt-get install python-setuptools exuberant-ctags -y
 
+  sudo apt install build-essential cmake python3-dev
+
   sudo add-apt-repository ppa:jonathonf/vim
   sudo apt remove vim
   sudo apt install vim
