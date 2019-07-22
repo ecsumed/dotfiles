@@ -1,4 +1,5 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 execute pathogen#infect()
 
 " set nocompatible              " be iMproved, required
@@ -17,6 +18,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+"CtrlP settings
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git)$',
+  \ 'file': '\v\.(odt|gpg|jpg|png|xlsx|pyc|gz|tar|log)$',
+  \ }
+
+let g:ctrlp_working_path_mode = 'r'
 " }}}
 
 " AUTOCOMMANDS {{{
@@ -186,14 +195,34 @@ set pastetoggle=<F10>
 " Rotate Color Scheme <F8>
 nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
-" Next Tab
-nnoremap <silent> <C-Right> :tabnext<CR>
- 
-" Previous Tab
-nnoremap <silent> <C-Left> :tabprevious<CR>
-"
-" New Tab
-nnoremap <silent> <C-t> :tabnew<CR>
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nnoremap <leader>t :enew<cr>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nnoremap <leader>bq :bp <BAR> bd #<CR>
+
+" CtrlP Buffer mode
+nmap <leader>bb :CtrlPBuffer<cr>
+
+" Move to the next/previous buffer
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+" Easier split navigation
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 " Edit vimrc \ev
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
@@ -211,13 +240,6 @@ nore , ;
 " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation"
-
-" Easier split navigation                     
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>            
-nmap <silent> <c-j> :wincmd j<CR>            
-nmap <silent> <c-h> :wincmd h<CR>            
-nmap <silent> <c-l> :wincmd l<CR>
 
 " don't skip wrapped lines
 nnoremap <silent> k gk
