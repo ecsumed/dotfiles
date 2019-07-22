@@ -152,6 +152,10 @@ install_pip_dependencies () {
 install_apt_dependencies () {
   info 'installing apt dependencies'
   sudo apt-get install exuberant-ctags -y
+
+  sudo add-apt-repository ppa:jonathonf/vim
+  sudo apt remove vim
+  sudo apt install vim
 }
 
 # setup_gitconfig
