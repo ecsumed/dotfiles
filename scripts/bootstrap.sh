@@ -166,6 +166,9 @@ install_dotfiles
 install_pip_dependencies
 install_apt_dependencies
 
+# Pull submodules
+git submodule update --init --recursive
+
 echo ''
 echo '  All installed!'
 
