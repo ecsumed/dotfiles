@@ -9,3 +9,11 @@ This will:
 
 1. Automatically link **\*.symlink files** to their respective directories. If the file already exists, it will prompt the user with a number of choices: _backup_, _overwrite_, _skip_. 
 
+
+
+### Add new plugins as submodules
+```
+git submodule add <git-url> <plugin>
+git add .
+git commit -m ...
+```

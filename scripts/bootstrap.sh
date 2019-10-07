@@ -151,7 +151,13 @@ install_pip_dependencies () {
 
 install_apt_dependencies () {
   info 'installing apt dependencies'
-  sudo apt-get install exuberant-ctags -y
+  sudo apt-get install python-setuptools exuberant-ctags -y
+
+  sudo apt install build-essential cmake python3-dev
+
+  sudo add-apt-repository ppa:jonathonf/vim
+  sudo apt remove vim
+  sudo apt install vim
 }
 
 # setup_gitconfig
@@ -159,6 +165,9 @@ install_apt_dependencies () {
 install_dotfiles
 install_pip_dependencies
 install_apt_dependencies
+
+# Pull submodules
+git submodule update --init --recursive
 
 echo ''
 echo '  All installed!'
