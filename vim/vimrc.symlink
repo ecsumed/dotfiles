@@ -1,5 +1,6 @@
 " set nocompatible              " be iMproved, required
-" filetype off                  " required
+filetype off                    " required
+syntax on                       " enable syntax
 
 " PLUGIN SETTINGS {{{
 " Ale settings
@@ -169,7 +170,7 @@ set noswapfile
 " Manual line folding
 set foldmethod=indent
 set foldlevel=99
-set foldclose=all
+" set foldclose=all
 
 " Set mode line, check by -> :verbose set modeline? if not working
 " some distros disable by default
@@ -221,6 +222,11 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+
+" Easier window navigation
+map <Tab> <C-W>w
+map <Bar> <C-W>v<C-W><Right>
+map -     <C-W>s<C-W><Down>
 
 " Edit vimrc \ev
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
