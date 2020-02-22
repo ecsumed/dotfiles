@@ -37,9 +37,6 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 " }}}
 
 " AESTHETICS {{{
-"gutter colors
-"highlight LineNr ctermfg=grey ctermbg=white
-
 " font/colorscheme options "
 set background=dark
 set t_Co=256
@@ -63,14 +60,6 @@ let g:indent_guides_guide_size = 1
 let g:NERDTreeWinPos = "right"
 
 set wildmenu
-
-" Commenting it out as it causes problems with very long lines
-"set cursorline
-"highlight CursorLine gui=underline cterm=underline
-
-"hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " }}}
 
 " FUNCTIONS {{{ 
