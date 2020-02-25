@@ -116,6 +116,9 @@ match OverLength /\%81v.\+/
 " }}}
 
 " SETTINGS {{{ 
+"allow easy copy + paste from os clipboard with y and p shortcuts
+set clipboard+=unnamed
+
 "show line numbers in gutter
 set number
 set showmatch
