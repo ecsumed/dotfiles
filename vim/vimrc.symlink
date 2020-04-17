@@ -40,8 +40,10 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 " font/colorscheme options "
 set background=dark
 set t_Co=256
-colorscheme kolor
-let g:airline_theme = 'kolor'
+" colorscheme kolor
+" let g:airline_theme = 'kolor'
+colorscheme solarized
+let g:airline_theme = 'solarized'
 
 " Airline tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -72,17 +74,6 @@ endfunction
 
 " Paste Toggle
 let paste_mode = 0 " 0 = normal, 1 = paste
-
-func! Paste_on_off()
-   if g:paste_mode == 0
-      set paste
-      let g:paste_mode = 1
-   else
-      set nopaste
-      let g:paste_mode = 0
-   endif
-   return
-endfunc
 
 " Rotate theme
 let themeindex=0
@@ -178,10 +169,6 @@ nnoremap <Leader>b :TagbarToggle<CR>
 
 " Toggle Syntastic errors
 nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
-
-" Toggle Paste Mode <F10>
-nnoremap <silent> <F10> :call Paste_on_off()<CR>
-set pastetoggle=<F10>
 
 " Rotate Color Scheme <F8>
 nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
