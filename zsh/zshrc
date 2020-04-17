@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh
 alias vim='mvim -v'
+alias ls='exa'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -114,7 +115,12 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 # Elements options of right prompt
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv root_indicator background_jobs time)
 
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$' '
+
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$''
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$''
+# POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR="%F{$DEFAULT_BACKGROUND}\ue0b0%f"
+# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR_ICON='%F{white}▓▒░%f'
+# POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR_ICON='░▒▓'
 
 POWERLEVEL9K_TIME_FOREGROUND='white'
 POWERLEVEL9K_TIME_BACKGROUND='none'
@@ -125,14 +131,14 @@ POWERLEVEL9K_STATUS_OK_BACKGROUND='none'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 # Add a space in the first prompt 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{215}▛%f"
 
 # Visual customisation of the second prompt line
 local user_symbol="$"
 if [[ $(print -P "%#") =~ "#" ]]; then
     user_symbol = "#"
 fi
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{215}▙%{%B%F{black}%K{215}%}$user_symbol%{%b%f%k%F{215}%} %{%f%}"
 
 # Dir Colors
 POWERLEVEL9K_DIR_HOME_BACKGROUND="none"
