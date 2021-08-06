@@ -40,12 +40,13 @@ autocmd Filetype groovy setlocal ts=2 sts=2 sw=2
 
 " AESTHETICS {{{
 " font/colorscheme options "
-set background=dark
+set background=light
 set t_Co=256
 " colorscheme kolor
 " let g:airline_theme = 'kolor'
 colorscheme solarized
 let g:airline_theme = 'solarized'
+let g:solarized_termcolors=256
 
 " Airline tabs
 let g:airline#extensions#tabline#enabled = 1
