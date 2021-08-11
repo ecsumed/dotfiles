@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias vim='mvim -v'
 alias ls='exa'
+alias tree='exa --tree'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
 alias aws2="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli:2.0.6"
@@ -138,6 +139,7 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='none'
 POWERLEVEL9K_STATUS_OK_BACKGROUND='none'
 POWERLEVEL9K_STATUS_OK='false'
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND='none'
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND='red'
 
 # Dir segment conf
 POWERLEVEL9K_DIR_HOME_BACKGROUND="none"
