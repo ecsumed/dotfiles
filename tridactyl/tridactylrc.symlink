@@ -10,9 +10,9 @@ unbind \h
 unbind \j
 bind \k tabprev
 bind \l tabnext
-bind gnY tabopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
-bind goY open https://desktop.pingone.com/loyalty/Selection?cmd=selection
-bind gwY winopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
+bind gnP tabopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
+bind goP open https://desktop.pingone.com/loyalty/Selection?cmd=selection
+bind gwP winopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
 
 " Autocmds
 autocmd DocStart loyaltyone.service-now.com mode ignore
