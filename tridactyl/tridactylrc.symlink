@@ -1,0 +1,21 @@
+" General Settings
+set configversion 1.8
+set newtab about:blank
+set theme quake
+set update.lastchecktime 1629816716317
+set update.lastnaggedversion 1.21.1
+
+" Binds
+unbind \h
+unbind \j
+bind \k tabprev
+bind \l tabnext
+bind gnY tabopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
+bind goY open https://desktop.pingone.com/loyalty/Selection?cmd=selection
+bind gwY winopen https://desktop.pingone.com/loyalty/Selection?cmd=selection
+
+" Autocmds
+autocmd DocStart loyaltyone.service-now.com mode ignore
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl
