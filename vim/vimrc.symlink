@@ -186,7 +186,7 @@ nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 nmap s <Plug>(easymotion-overwin-f2)
 
 " Open Url on this line with the browser \w
-map <Leader>b :call Browser ()<CR>
+map <Leader>B :call Browser ()<CR>
 
 " Toggle Tagbar with \b
 nnoremap <Leader>b :TagbarToggle<CR>
