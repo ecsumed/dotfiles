@@ -41,6 +41,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
 " Set language specific indent sizes
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype groovy setlocal ts=2 sts=2 sw=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " }}}
 
 " AESTHETICS {{{
