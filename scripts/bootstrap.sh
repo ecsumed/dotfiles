@@ -163,8 +163,8 @@ install_apt_dependencies () {
 # setup_gitconfig
 # install_configfiles
 install_dotfiles
-install_pip_dependencies
-install_apt_dependencies
+# install_pip_dependencies
+# install_apt_dependencies
 
 # Pull submodules
 git submodule update --init --recursive
