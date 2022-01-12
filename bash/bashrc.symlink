@@ -139,6 +139,12 @@ alias dockerexec='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -
 # local aliases
 source ~/.local.bashrc
 
+# fzf key bindings
+source /usr/share/doc/fzf/examples/key-bindings.bash
+
+# fzf auto completions
+source /usr/share/doc/fzf/examples/completion.bash
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 

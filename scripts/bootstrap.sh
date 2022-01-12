@@ -151,23 +151,23 @@ install_pip_dependencies () {
 
 install_apt_dependencies () {
   info 'installing apt dependencies'
-  sudo apt-get install python-setuptools exuberant-ctags -y
+  sudo apt-get install python3-pip exuberant-ctags -y
 
-  sudo apt install build-essential cmake python3-dev
-
-  sudo add-apt-repository ppa:jonathonf/vim
-  sudo apt remove vim
-  sudo apt install vim
+  sudo apt install build-essential cmake python3-dev vim-nox
 }
 
-# setup_gitconfig
-# install_configfiles
+setup_gitconfig
+install_configfiles
 install_dotfiles
-install_pip_dependencies
 install_apt_dependencies
+install_pip_dependencies
 
 # Pull submodules
 git submodule update --init --recursive
+
+
+cd ~/.vim/pack/git-plugins/start/YouCompleteMe
+python3 install.py
 
 echo ''
 echo '  All installed!'
