@@ -49,3 +49,6 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/accelerated-smooth-scroll"]
 	path = vim/vim.symlink/pack/git-plugins/start/accelerated-smooth-scroll
 	url = https://github.com/yonchu/accelerated-smooth-scroll.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/minimap.vim"]
+	path = vim/vim.symlink/pack/git-plugins/start/minimap.vim
+	url = https://github.com/wfxr/minimap.vim.git
