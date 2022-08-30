@@ -89,12 +89,13 @@ alias ls='exa'
 alias tree='exa --tree'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
+alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
+alias k="kubectl"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Reload the plugin to highlight the commands each time Iterm2 starts 
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 ### VISUAL CUSTOMISATION ### 
 
