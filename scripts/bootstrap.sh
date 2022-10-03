@@ -27,6 +27,17 @@ fail () {
   exit
 }
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+info 'Current Machine: ${machine}'
+
 setup_gitconfig () {
   if [ -f git/gitconfig.symlink ]
   then
@@ -144,9 +155,9 @@ install_configfiles() {
   done
 }
 
-install_pip_dependencies () {
-  info 'installing pip dependencies'
-  pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
+install_pip3_dependencies () {
+  info 'installing pip3 dependencies'
+  pip3 install -r "$DOTFILES_ROOT/pip_requirements.txt"
 }
 
 install_apt_dependencies () {
@@ -159,12 +170,16 @@ install_apt_dependencies () {
 setup_gitconfig
 install_configfiles
 install_dotfiles
-install_apt_dependencies
-install_pip_dependencies
+
+if [ $machine == "Linux" ]; then
+  install_apt_dependencies
+fi
+info 'Current Machine: ${machine}'
+
+install_pip3_dependencies
 
 # Pull submodules
 git submodule update --init --recursive
-
 
 cd ~/.vim/pack/git-plugins/start/YouCompleteMe
 python3 install.py
