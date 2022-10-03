@@ -159,15 +159,15 @@ install_apt_dependencies () {
 setup_gitconfig
 install_configfiles
 install_dotfiles
-# install_apt_dependencies
-# install_pip_dependencies
+install_apt_dependencies
+install_pip_dependencies
 
 # Pull submodules
 git submodule update --init --recursive
 
 
-# cd ~/.vim/pack/git-plugins/start/YouCompleteMe
-# python3 install.py
+cd ~/.vim/pack/git-plugins/start/YouCompleteMe
+python3 install.py
 
 echo ''
 echo '  All installed!'
