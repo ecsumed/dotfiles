@@ -174,7 +174,6 @@ install_dotfiles
 if [ $machine == "Linux" ]; then
   install_apt_dependencies
 fi
-info 'Current Machine: ${machine}'
 
 install_pip3_dependencies
 
