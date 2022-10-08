@@ -1,6 +1,6 @@
 .viminfo
 .netrwhist
-.swp
+*.swp
 .profile
 
 git/gitconfig.local.symlink
