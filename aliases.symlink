@@ -22,4 +22,4 @@ alias ....="cd ../../../"
 alias .....="cd ../../../.."
 
 # load local aliases
-source ~/.aliases
+source ~/.aliases.local
