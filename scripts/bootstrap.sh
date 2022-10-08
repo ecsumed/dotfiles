@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-#
-# bootstrap installs things.
 
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
@@ -28,9 +26,9 @@ fail () {
 }
 
 setup_gitconfig () {
-  if [ -f git/gitconfig.symlink ]
+  if [ ! -f git/gitconfig.local.symlink ]
   then
-    info 'setup gitconfig'
+    info 'Setup gitconfig'
 
     user ' - What is your github author name?'
     read -e git_authorname
@@ -124,7 +122,7 @@ install_dotfiles () {
   local overwrite_all=false backup_all=false skip_all=false
 
   #all files in home directory
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not \( -path '*.git*' -o -path './config/*' \))
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
@@ -137,7 +135,7 @@ install_configfiles() {
 
   local overwrite_all=false backup_all=false skip_all=false
   #all .config files
-  for src in $(find "$DOTFILES_ROOT/.config" -maxdepth 1 -name '*.symlink')
+  for src in $(find "$DOTFILES_ROOT/config" -maxdepth 1 -name '*.symlink')
   do
     dst="$HOME/.config/$(basename "${src%.*}")"
     link_file "$src" "$dst"
@@ -149,6 +147,13 @@ install_pip_dependencies () {
   pip install -r "$DOTFILES_ROOT/pip_requirements.txt"
 }
 
+pull_submodules() {
+  git submodule update --init --recursive
+
+  cd ~/.vim/pack/git-plugins/start/YouCompleteMe
+  python3 install.py
+}
+
 install_apt_dependencies () {
   info 'installing apt dependencies'
   sudo apt-get install python3-pip exuberant-ctags -y
@@ -156,19 +161,32 @@ install_apt_dependencies () {
   sudo apt install build-essential cmake python3-dev vim-nox
 }
 
-setup_gitconfig
+install_binaries () {
+  info 'installing binaries'
+
+  # Starship install
+  curl -sS https://starship.rs/install.sh | sh
+}
+
+confirm_and_run () {
+  read -n1 -p "$2 [y,n]" input
+  case $input in
+    y|Y) $1 ;;
+    *) echo skipping ;;
+  esac
+}
+
+confirm_and_run setup_gitconfig 'Setup git?'
+
 install_configfiles
 install_dotfiles
-install_apt_dependencies
-install_pip_dependencies
 
-# Pull submodules
-git submodule update --init --recursive
+confirm_and_run install_apt_dependencies 'Install apt dependencies?'
+confirm_and_run install_pip_dependencies 'Install pip dependencies?'
 
+confirm_and_run pull_submodules 'Pull submodules for vim?'
 
-cd ~/.vim/pack/git-plugins/start/YouCompleteMe
-python3 install.py
+confirm_and_run install_binaries 'Install binaries?'
 
 echo ''
 echo '  All installed!'
-

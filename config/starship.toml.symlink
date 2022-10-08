@@ -1,0 +1,79 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[┌──────────────────────────────────────>](#4a4f3b)
+[│](bold #4a4f3b)\
+$username\
+$hostname\
+$directory \
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status
+[╰─$character](bold #4a4f3b)"""
+
+right_format = """
+$kubernetes \
+$golang \
+$python \
+$rust \
+$terraform \
+$aws\
+$status\
+$cmd_duration\
+$time
+"""
+
+# Wait timout to check files under the current directory.
+scan_timeout = 10 # milliseconds
+
+# Add new line before prompt
+add_newline = true
+
+[character]
+#╰╭❯➜✗✖
+success_symbol = "[❯](bold #4a4f3b)"
+error_symbol = "[✗](bold red)"
+
+[fill]
+symbol = " "
+style = "bold #4a4f3b"
+
+[username]
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+format = "[@$ssh_symbol$hostname]($style)"
+ssh_only = true
+
+[directory]
+format = " [$path]($style)[$read_only]($read_only_style)"
+truncate_to_repo = false
+style = "#a32f7e"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+
+[git_status]
+stashed = ""
+
+[status]
+symbol = "  "
+format = '[$signal_name\($status\)]($style)[$symbol](bold gray)'
+disabled = false
+
+[cmd_duration]
+min_time = 3_000 # milliseconds
+format = "took [$duration](bold yellow)[  ](bold gray)"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+use_12hr = true
+
+[package]
+disabled = true
