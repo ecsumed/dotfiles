@@ -163,11 +163,11 @@ install_dotfiles
 # install_pip_dependencies
 
 # Pull submodules
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
 
-cd ~/.vim/pack/git-plugins/start/YouCompleteMe
-python3 install.py
+# cd ~/.vim/pack/git-plugins/start/YouCompleteMe
+# python3 install.py
 
 echo ''
 echo '  All installed!'
