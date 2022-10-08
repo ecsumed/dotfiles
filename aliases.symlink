@@ -1,0 +1,26 @@
+# Makes a more readable output.
+alias du='du -kh'
+alias df='df -kTh'
+
+alias ls='exa'
+alias ll='exa --long --tree -L1'
+
+# tmux color suppport
+alias tmux='tmux -2'
+
+# fetch external ip
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+alias tree='exa --tree'
+
+# execute last command with sudo 
+alias fuck='sudo $(history -p \!\!)'
+
+# cd shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../../"
+alias .....="cd ../../../.."
+
+# load local aliases
+source ~/.aliases.local

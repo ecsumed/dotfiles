@@ -1,0 +1,16 @@
+
+# docker
+alias dockerkill="docker ps | awk '{print \$1}' | xargs docker kill"
+alias dockerclean="docker ps -a | awk '{print \$1}' | xargs -I '{}' docker rm {}"
+alias dockerexec='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti $1'
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
+
+# mac vim
+alias vim='mvim -v'
+
+# different aws versions
+alias aws2="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli:2.0.6"
+alias aws1="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
+
+# edit resolve
+alias vimresolve='sudo vim /etc/resolv.conf'

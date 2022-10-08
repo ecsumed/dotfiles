@@ -34,9 +34,6 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/vim-airline-themes"]
 	path = vim/vim.symlink/pack/git-plugins/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "vim/vim.symlink/pack/git-plugins/start/YouCompleteMe"]
-	path = vim/vim.symlink/pack/git-plugins/start/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/vim-go"]
 	path = vim/vim.symlink/pack/git-plugins/start/vim-go
 	url = https://github.com/fatih/vim-go.git
@@ -52,3 +49,9 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/minimap.vim"]
 	path = vim/vim.symlink/pack/git-plugins/start/minimap.vim
 	url = https://github.com/wfxr/minimap.vim.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/ranger.vim"]
+	path = vim/vim.symlink/pack/git-plugins/start/ranger.vim
+	url = git@github.com:francoiscabrol/ranger.vim.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/YouCompleteMe"]
+	path = vim/vim.symlink/pack/git-plugins/start/YouCompleteMe
+	url = git@github.com:ycm-core/YouCompleteMe.git
