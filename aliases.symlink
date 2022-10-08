@@ -3,6 +3,7 @@ alias du='du -kh'
 alias df='df -kTh'
 
 alias ls='exa'
+alias ll='exa --long --tree -L1'
 
 # tmux color suppport
 alias tmux='tmux -2'
