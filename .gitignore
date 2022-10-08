@@ -6,3 +6,4 @@
 git/gitconfig.local.symlink
 
 **local**
+!aliases.local.symlink
