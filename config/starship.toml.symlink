@@ -61,6 +61,11 @@ symbol = " "
 [git_status]
 stashed = ""
 
+[kubernetes]
+format = '[$symbol$context\[$namespace\]]($style)  '
+style = "#A239A0"
+disabled = false
+
 [status]
 symbol = "  "
 format = '[$signal_name\($status\)]($style)[$symbol](bold gray)'
