@@ -22,7 +22,6 @@ plugins=(
   kubectl
   docker
   zsh-syntax-highlighting
-  zsh-kubectl-prompt
 )
 
 source $ZSH/oh-my-zsh.sh
