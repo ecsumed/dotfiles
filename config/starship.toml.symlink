@@ -59,7 +59,8 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 symbol = " "
 
 [git_status]
-stashed = ""
+format = '([\[$conflicted[$stashed](bold purple)$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
+stashed = "⍟"
 
 [kubernetes]
 format = '[ $symbol$context/$namespace ]($style)[  ](bold #A239A0)'
