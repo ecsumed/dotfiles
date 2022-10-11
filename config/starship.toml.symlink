@@ -15,7 +15,6 @@ $git_status
 [╰─$character](bold #4a4f3b)"""
 
 right_format = """
-$kubernetes \
 $golang \
 $python \
 $rust \
@@ -23,6 +22,7 @@ $terraform \
 $aws\
 $status\
 $cmd_duration\
+$kubernetes \
 $time
 """
 
@@ -59,21 +59,24 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 symbol = " "
 
 [git_status]
-stashed = ""
+format = '([\[$conflicted[$stashed](bold purple)$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
+stashed = "⍟"
 
 [kubernetes]
-format = '[$symbol$context\[$namespace\]]($style)  '
-style = "#A239A0"
+format = '[ $symbol$context/$namespace ]($style)[  ](bold #A239A0)'
+style = "fg:white bg:#A239A0"
 disabled = false
 
+[aws]
+format = '[$signal_name\($status\)$symbol]($style) '
+
 [status]
-symbol = "  "
-format = '[$signal_name\($status\)]($style)[$symbol](bold gray)'
+format = '[$signal_name\($status\)$symbol]($style)[  ](bold red)'
 disabled = false
 
 [cmd_duration]
 min_time = 3_000 # milliseconds
-format = "took [$duration](bold yellow)[  ](bold gray)"
+format = "took [$duration](bold yellow)[  ](bold yellow)"
 
 [time]
 disabled = false
