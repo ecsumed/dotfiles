@@ -15,7 +15,6 @@ $git_status
 [╰─$character](bold #4a4f3b)"""
 
 right_format = """
-$kubernetes \
 $golang \
 $python \
 $rust \
@@ -23,6 +22,7 @@ $terraform \
 $aws\
 $status\
 $cmd_duration\
+$kubernetes \
 $time
 """
 
