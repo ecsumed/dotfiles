@@ -34,7 +34,7 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
-info 'Current Machine: ${machine}'
+info "Current Machine: ${machine}\n"
 
 setup_gitconfig () {
   if [ ! -f git/gitconfig.local.symlink ]
