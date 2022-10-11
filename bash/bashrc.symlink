@@ -1,143 +1,7 @@
 # ecsumed
 
-# Functions {{{ 
-hr() {
-    local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
-    local cols=${COLUMNS:-$(tput cols)}
-    while ((${#line} < cols)); do line+="$line"; done
-    printf '%s%s%s' "$start" "${line:0:cols-11}" "$end"
-}
-
-function BashPrompt() {
-    local last_status=$?
-
-    local failure="✘"
-    local success="✔"
-
-    if [[ "$last_status" != "0" ]]; then
-        last_status="$C_ERR_CODE($last_status)$failure$RESET"
-    else
-        last_status="$RESET"
-    fi
-
-    if [ -z ${VIRTUAL_ENV+x} ]; then
-        py_env="$RESET";
-    else
-        env_name=$(basename $VIRTUAL_ENV)
-        py_env="$C_ENV_STATUS($env_name)$RESET";
-    fi
-
-
-    # Add dotted line
-    h_line="$C_LINE$(hr)$C_TIME[\t]$RESET"
-
-    # ...some other things like hostname, current git branch etc
-    user_host="$C_HOST_USER\u@\h$RESET ✯ "
-    current_dir="$C_DIR\w$RESET"
-    git_status="$C_GIT_STATUS$(parse_git_branch)$RESET"
-
-    main_line="$user_host$current_dir $git_status"
-
-    command_dollar="$C_CMD_START 〉$RESET"
-
-    echo "\[\e]0;\w\a\]\n$C_LINE╭$h_line\n$C_LINE│$main_line\n$C_LINE╰$last_status$py_env$command_dollar"
-}
-
-# get current branch in git repo 
-function parse_git_branch() {
-    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-    if [ ! "${BRANCH}" == "" ]
-    then
-        STAT=`parse_git_dirty`
-        echo "[${BRANCH}${STAT}]"
-    else
-        echo ""
-    fi
-}
- 
-# get current status of git repo
-function parse_git_dirty {
-    status=`git status 2>&1 | tee`
-    dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
-    untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-    ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
-    newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
-    renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
-    deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
-    bits=''
-    if [ "${renamed}" == "0" ]; then
-        bits=">${bits}"
-    fi
-    if [ "${ahead}" == "0" ]; then
-        bits="*${bits}"
-    fi
-    if [ "${newfile}" == "0" ]; then
-        bits="+${bits}"
-    fi
-    if [ "${untracked}" == "0" ]; then
-        bits="?${bits}"
-    fi
-    if [ "${deleted}" == "0" ]; then
-        bits="x${bits}"
-    fi
-    if [ "${dirty}" == "0" ]; then
-        bits="!${bits}"
-    fi
-    if [ ! "${bits}" == "" ]; then
-        echo " ${bits}"
-    else
-        echo ""
-    fi
-}
-# }}}
-
-# Aliases {{{ 
-
-# Prevents accidentally clobbering files.
-alias mkdir='mkdir -p'
-
-# Makes a more readable output.
-alias du='du -kh'
-alias df='df -kTh'
-
-alias ls='ls -h --color'
-alias lx='ls -lXB'         #  Sort by extension.
-alias lk='ls -lSr'         #  Sort by size, biggest last.
-alias lt='ls -ltr'         #  Sort by date, most recent last.
-alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
-alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
-
-# The ubiquitous 'll': directories first, with alphanumeric sorting:
-alias ll="ls -lav --group-directories-first"
-
-alias lm='ll |more'        #  Pipe through 'more'
-alias lr='ll -R'           #  Recursive ls.
-alias la='ll -A'           #  Show hidden files.
-
-alias tmux='tmux -2'       # for tmux color suppport
-
-alias vimresolve='sudo vim /etc/resolv.conf'
-  
-# my external ip
-alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
-
-# execute last command with sudo 
-alias fuck='sudo $(history -p \!\!)'
-
-# cd shortcuts
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../../"
-alias .....="cd ../../../.."
-
-# docker
-alias dockerkill="docker ps | awk '{print \$1}' | xargs docker kill"
-alias dockerclean="docker ps -a | awk '{print \$1}' | xargs -I '{}' docker rm {}"
-alias dockerexec='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti $1'
-# }}}
-
-# local aliases
-source ~/.local.bashrc
+# aliases
+source ~/.aliases
 
 # fzf key bindings
 source /usr/share/doc/fzf/examples/key-bindings.bash
@@ -148,7 +12,6 @@ source /usr/share/doc/fzf/examples/completion.bash
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Settings {{{ 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 HISTIGNORE='exit:clear:weather *'
@@ -174,7 +37,6 @@ set -o noclobber
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-# }}} 
 
 case "$TERM" in
 # If this is an xterm
@@ -186,35 +48,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Need to set colors vars after 256 colors have been set. Otherwise
-# the >9 colors won't show and we'll have to source bashrc again.
-# Used colors
-RESET="\[$(tput sgr0)\]"
-BOLD="\[$(tput bold)\]"
-C_ERR_CODE="$BOLD\[$(tput setaf 162)\]"
-C_HOST_USER="$BOLD\[$(tput setaf 214)\]"
-C_DIR="$BOLD\[$(tput setaf 147)\]"
-C_GIT_STATUS="$BOLD\[$(tput setaf 184)\]"
-C_ENV_STATUS="$BOLD\[$(tput setaf 211)\]"
-C_TIME="$BOLD\[$(tput setaf 147)\]"
-C_LINE="$BOLD\[$(tput setaf 255)\]"
-C_CMD_START="$BOLD\[$(tput setaf 214)\]"
-
-# ...and the hook which updates the prompt whenever we run a command
-PROMPT_COMMAND='PS1=$(BashPrompt)'
-
-PS2="\[$BGreen\]> \[$NC\]"
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
@@ -222,5 +55,10 @@ if [ -f /home/fahad/.fzf-completions.bash ] && ! shopt -oq posix; then
     . /home/fahad/.fzf-completions.bash
 fi
 # }}} 
+
+# source local bashrc
+source $HOME/.bashrc.local
+
+eval "$(starship init bash)"
 
 # vim:foldmethod=marker:foldlevel=0
