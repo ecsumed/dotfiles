@@ -17,12 +17,12 @@ $git_status
 right_format = """
 $status\
 $cmd_duration\
-$golang \
-$python \
-$rust \
+$golang\
+$python\
+$rust\
 $aws\
-$terraform \
-$kubernetes \
+$terraform\
+$kubernetes\
 $time
 """
 
