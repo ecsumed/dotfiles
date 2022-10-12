@@ -15,13 +15,13 @@ $git_status
 [╰─$character](bold #4a4f3b)"""
 
 right_format = """
+$status\
+$cmd_duration\
 $golang \
 $python \
 $rust \
-$terraform \
 $aws\
-$status\
-$cmd_duration\
+$terraform \
 $kubernetes \
 $time
 """
@@ -67,8 +67,11 @@ format = '[ $symbol$context/$namespace ]($style)[  ](bold #A239A0)'
 style = "fg:white bg:#A239A0"
 disabled = false
 
+[terraform]
+format = "[$symbol$version$workspace]($style)[  ](bold 105)"
+
 [aws]
-format = '[$signal_name\($status\)$symbol]($style) '
+format = '[$signal_name\($status\)$symbol]($style)[  ](bold yellow)'
 
 [status]
 format = '[$signal_name\($status\)$symbol]($style)[  ](bold red)'
