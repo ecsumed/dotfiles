@@ -11,10 +11,8 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
-$git_status
-[╰─$character](bold #4a4f3b)"""
-
-right_format = """
+$git_status\
+$fill\
 $status\
 $cmd_duration\
 $golang\
@@ -24,7 +22,7 @@ $aws\
 $terraform\
 $kubernetes\
 $time
-"""
+[╰─$character](bold #4a4f3b)"""
 
 # Wait timout to check files under the current directory.
 scan_timeout = 10 # milliseconds
