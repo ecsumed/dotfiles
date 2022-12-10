@@ -1,12 +1,27 @@
 
-# set -g @plugin "arcticicestudio/nord-tmux"
+#########################
+# Plugins
+#########################
+set -g @plugin 'laktak/extrakto'
+
+# Promising, but no support for ARM yet...
+# set -g @plugin 'fcsonline/tmux-thumbs'
+# run-shell ~/.tmux/plugins/tmux-thumbs/tmux-thumbs.tmux
+
+#########################
+# Themes
+#########################
+set -g @plugin "arcticicestudio/nord-tmux"
 
 # set -g @plugin 'egel/tmux-gruvbox'
 # set -g @tmux-gruvbox 'dark' # or 'light'
 
-set -g @plugin 'seebi/tmux-colors-solarized'
-set -g @colors-solarized 'dark'
+# set -g @plugin 'seebi/tmux-colors-solarized'
+# set -g @colors-solarized 'dark'
 
+#########################
+# Everything else
+#########################
 # set window split
 bind-key v split-window -h
 bind-key b split-window
@@ -24,5 +39,6 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# THIS MUST BE LAST!
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
