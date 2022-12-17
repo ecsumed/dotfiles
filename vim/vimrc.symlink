@@ -55,8 +55,12 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " font/colorscheme options "
 set background=dark
 set t_Co=256
-colorscheme solarized
-let g:airline_theme = 'solarized'
+
+" Theme setup
+" Set the following export in `~/.bashrc.local`
+" export VIM_THEME=kolor
+colorscheme $VIM_THEME
+let g:airline_theme = '$VIM_THEME'
 let g:solarized_termcolors=256
 
 " Airline tabs
