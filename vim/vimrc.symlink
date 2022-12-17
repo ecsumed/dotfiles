@@ -53,10 +53,10 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " AESTHETICS {{{
 " font/colorscheme options "
-set background=light
+set background=dark
 set t_Co=256
-colorscheme solarized
-let g:airline_theme = 'solarized'
+colorscheme kolor
+let g:airline_theme = 'kolor'
 let g:solarized_termcolors=256
 
 " Airline tabs
