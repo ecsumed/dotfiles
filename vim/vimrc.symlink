@@ -55,8 +55,8 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " font/colorscheme options "
 set background=dark
 set t_Co=256
-colorscheme kolor
-let g:airline_theme = 'kolor'
+colorscheme solarized
+let g:airline_theme = 'solarized'
 let g:solarized_termcolors=256
 
 " Airline tabs
