@@ -56,7 +56,7 @@ set t_Co=256
 " Set the following export in `~/.bashrc.local`
 " export VIM_THEME=kolor
 colorscheme $VIM_THEME
-let g:airline_theme = '$VIM_THEME'
+let g:airline_theme = 'solarized'
 let g:solarized_termcolors=256
 
 " Airline tabs
