@@ -174,9 +174,24 @@ pull_submodules() {
 
 install_apt_dependencies () {
   info 'installing apt dependencies'
-  sudo apt-get install python3-pip exuberant-ctags -y
 
-  sudo apt install build-essential cmake python3-dev vim-nox
+  apt-get install \
+    python3-pip \
+    build-essential \
+    cmake \
+    python3-dev \
+    vim-nox \
+    fzf \
+    exa \
+    ripgrep
+}
+
+install_mac_dependencies () {
+  info 'installing mac dependencies'
+  brew install \
+    fzf \
+    exa \
+    ripgrep
 }
 
 install_binaries () {
@@ -184,6 +199,9 @@ install_binaries () {
 
   # Starship install
   curl -sS https://starship.rs/install.sh | sh
+
+  # Install tmux plugins
+  ~/.tmux/plugins/tpm/bin/install_plugins
 }
 
 confirm_and_run () {
@@ -201,6 +219,10 @@ install_dotfiles
 
 if [ $machine == "Linux" ]; then
   confirm_and_run install_apt_dependencies 'Install apt dependencies?'
+fi
+
+if [ $machine == "Mac" ]; then
+  confirm_and_run install_mac_dependencies 'Install apt dependencies?'
 fi
 
 confirm_and_run install_pip3_dependencies 'Install pip dependencies?'

@@ -51,6 +51,7 @@ ssh_only = true
 format = " [$path]($style)[$read_only]($read_only_style)"
 truncate_to_repo = false
 style = "#a32f7e"
+truncation_length = 8
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
