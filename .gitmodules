@@ -48,13 +48,13 @@
 	url = https://github.com/wfxr/minimap.vim.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/ranger.vim"]
 	path = vim/vim.symlink/pack/git-plugins/start/ranger.vim
-	url = git@github.com:francoiscabrol/ranger.vim.git
+	url = https://github.com/francoiscabrol/ranger.vim.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/YouCompleteMe"]
 	path = vim/vim.symlink/pack/git-plugins/start/YouCompleteMe
-	url = git@github.com:ycm-core/YouCompleteMe.git
+	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/fzf.vim"]
 	path = vim/vim.symlink/pack/git-plugins/start/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
+	url = https://github.com/junegunn/fzf.vim.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/fzf"]
 	path = vim/vim.symlink/pack/git-plugins/start/fzf
 	url = https://github.com/junegunn/fzf
