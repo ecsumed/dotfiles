@@ -172,6 +172,8 @@ set noswapfile
 " Manual line folding
 set foldmethod=indent
 set foldlevel=99
+set foldminlines=4
+set foldnestmax=4
 " set foldclose=all
 
 " Set mode line, check by -> :verbose set modeline? if not working
