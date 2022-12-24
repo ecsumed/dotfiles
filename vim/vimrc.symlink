@@ -3,7 +3,7 @@ filetype off                    " required
 syntax on                       " enable syntax
 
 " PLUGIN SETTINGS {{{
-" Ale settings
+" Ale {{{
 let g:ale_fixers = { '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace']}
 
 let g:ale_linters = {'python': ['flake8']}
@@ -20,18 +20,21 @@ augroup CloseLoclistWindowGroup
     autocmd!
     autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
+" }}}
 
-"fzf settings
+" fzf {{{
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_layout = { 'down': '40%' }
+" "}}}
 
-" Easy Motion settings
+" Easy Motion {{{
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " Enable minimap
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
+" }}}
 " }}}
 
 " AUTOCOMMANDS {{{
@@ -56,21 +59,24 @@ set t_Co=256
 " Set the following export in `~/.bashrc.local`
 " export VIM_THEME=kolor
 colorscheme $VIM_THEME
-let g:airline_theme = 'solarized'
 let g:solarized_termcolors=256
 
-" Airline tabs
+" Airline {{{
+let g:airline_theme = 'solarized'
+
 let g:airline#extensions#tabline#enabled = 1
+" }}}
 
 " visual cue for long lines
 " highlight OverLength ctermbg=red ctermfg=white 
 highlight OverLength ctermbg=gray ctermfg=black
 
-" indent guides
+" indent guides {{{
 set ts=4 sw=4 et
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+" }}}
 
 " NERDTree positioning
 let g:NERDTreeWinPos = "right"
@@ -175,35 +181,26 @@ set modelines=1
 
 " Mappings {{{
 
-" Auto move mappings
-" \\l
-map <Leader><Leader>l <Plug>(easymotion-lineforward)
-" \\j
-map <Leader><Leader>j <Plug>(easymotion-j)
-" \\k
-map <Leader><Leader>k <Plug>(easymotion-k)
-" \\h
-map <Leader><Leader>h <Plug>(easymotion-linebackward)
+" MAIN keys! {{{
+" probably the most used key, 'jj' to escape from insert mode
+" decreases pinky pain
+imap jj <C-[>
 
+" the second most used key, one key stroke less
+nore ; :
+nore , ;
+" }}}
+
+" EasyMotion {{{
 " \\f{char} to move to {char}
 map  <Leader><Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
+" }}}
 
-" Open Url on this line with the browser \w
-map <Leader>B :call Browser ()<CR>
-
-" Toggle Tagbar with \b
-nnoremap <Leader>b :TagbarToggle<CR>
-
-" Toggle Syntastic errors
-nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
-
-" Rotate Color Scheme <F8>
-nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
-
+" Buffers {{{
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -216,9 +213,6 @@ nnoremap <leader>t :enew<cr>
 " This replicates the idea of closing a tab
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 
-" CtrlP Buffer mode
-nmap <leader>bb :CtrlPBuffer<cr>
-
 " Move to the next/previous buffer
 nmap <silent> <c-l> :bnext<CR>
 nmap <silent> <c-h> :bprevious<CR>
@@ -228,7 +222,9 @@ nmap <leader><leader>bd :%bd<BAR>e#<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+" }}}
 
+" Panes {{{
 " Easier split navigation
 " Use ctrl-[hjkl] to select the active split!
 nmap <leader>k :wincmd k<CR>
@@ -240,6 +236,19 @@ nmap <leader>l :wincmd l<CR>
 map <Tab> <C-W>w
 map <Bar> <C-W>v<C-W><Right>
 map -     <C-W>s<C-W><Down>
+" }}}
+
+" Open Url on this line with the browser \w
+map <Leader>B :call Browser ()<CR>
+
+" Toggle Tagbar with \b
+nnoremap <Leader>b :TagbarToggle<CR>
+
+" Toggle Ale errors
+nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
+
+" Rotate Color Scheme <F8>
+nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
 " Remove search colors
 nnoremap <Leader><space> :noh<cr>
@@ -247,13 +256,6 @@ nnoremap <Leader><space> :noh<cr>
 " Edit vimrc \ev
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 
-" probably the most used key, 'jj' to escape from insert mode
-"decreases pinky pain
-imap jj <C-[>
-
-" the second most used key, one key stroke less
-nore ; :
-nore , ;
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
@@ -289,17 +291,16 @@ map <C-n> :NERDTreeToggle<CR>
 " of a python list by adding quotes and square brackets.
 vmap pyl :s!^!"!<CR>gv:s!$!",!<CR>gvJI[<Esc>A<BS>]<Esc>I
 
-" pre-defined inserts, ex: enter insert mode, type 'AlP' and then ESCAPE/SPACE,
+" Insert Macros {{{
+" pre-defined inserts, ex: enter insert mode, type 'CoH' and then ESCAPE/SPACE,
 " and magic...
-iab AlP ABCDEFGHIJKLMNOPQRSTUVWXYZ
-iab MoN January February March April May June July
-    \ August September October November December
-iab MoO Jan Feb Mar Apr May Jun Jul Aug Sep Feb Mar
-    \ Apr May Jun Jul Aug Sep Oct Nov Dec
-iab NuM 123456789012345678901234567890123456789
-    \ 01234567890123456789012345678901234567890 
-iab RuL ----+----1----+----2----+----3----+----
-    \ 4----+----5----+----6----+----7----+----8----+----9----+----0
+
+" [Co]mment [H]ash
+iab CoH #################################################
+
+" [Co]mment [S]lash
+iab CoS /////////////////////////////////////////////////
+" }}}
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
