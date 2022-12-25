@@ -85,6 +85,23 @@ set wildmenu
 " }}}
 
 " FUNCTIONS {{{ 
+function! Marks()
+    marks
+    echo('Mark: ')
+
+    " getchar() - prompts user for a single character and returns the chars
+    " ascii representation
+    " nr2char() - converts ASCII `NUMBER TO CHAR'
+
+    let s:mark = nr2char(getchar())
+    " remove the `press any key prompt'
+    redraw
+
+    " build a string which uses the `normal' command plus the var holding the
+    " mark - then eval it.
+    execute "normal! '" . s:mark
+endfunction
+
 " Open URL in browser
 function! Browser ()
    let line = getline (".")
@@ -190,8 +207,8 @@ set modelines=1
 imap jj <C-[>
 
 " the second most used key, one key stroke less
-nore ; :
-nore , ;
+"nore ; :
+"nore , ;
 " }}}
 
 " EasyMotion {{{
@@ -241,6 +258,7 @@ map <Bar> <C-W>v<C-W><Right>
 map -     <C-W>s<C-W><Down>
 " }}}
 
+" Function shortcuts {{{
 " Open Url on this line with the browser \w
 map <Leader>B :call Browser ()<CR>
 
@@ -253,12 +271,11 @@ nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
 " Rotate Color Scheme <F8>
 nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
+nnoremap ' :call Marks()<CR>
+" }}}
+
 " Remove search colors
 nnoremap <Leader><space> :noh<cr>
-
-" Edit vimrc \ev
-nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
-
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
