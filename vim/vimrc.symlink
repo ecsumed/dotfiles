@@ -62,7 +62,7 @@ colorscheme $VIM_THEME
 let g:solarized_termcolors=256
 
 " Airline {{{
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'kolor'
 
 let g:airline#extensions#tabline#enabled = 1
 " }}}
@@ -146,8 +146,8 @@ match OverLength /\%95v.\+/
 "allow easy copy + paste from os clipboard with y and p shortcuts
 set clipboard+=unnamed
 
-"show line numbers in gutter
-set number
+" show line numbers in gutter
+set number relativenumber
 set showmatch
 
 "new line indent same as previous one
@@ -191,7 +191,7 @@ set foldmethod=indent
 set foldlevel=99
 set foldminlines=4
 set foldnestmax=4
-set foldcolumn=2
+set foldcolumn=3
 " set foldclose=all
 
 " Set mode line, check by -> :verbose set modeline? if not working
