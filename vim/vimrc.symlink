@@ -32,8 +32,10 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " Enable minimap
 let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
+let g:minimap_auto_start = 0
+let g:minimap_auto_start_win_enter = 0
+let g:minimap_block_filetypes = ["fugitive", "nerdtree", "tagbar", "fzf"]
+let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt'] 
 " }}}
 " }}}
 
@@ -301,8 +303,28 @@ nnoremap <space> za
 map N Nzz
 map n nzz
 
+" minimap toggle
+nnoremap <space>mt :MinimapToggle<CR>
+
 " fzf mappings
 nnoremap <c-p> :Files<cr>
+
+" git(fugitive) mappings
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Git<CR>
+nnoremap <space>gc :Git commit<CR>
+nnoremap <space>gd :Gvdiffsplit<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Git log<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Git! push<CR>
+nnoremap <space>gpl :Git! pull<CR>
 
 " Toggle NERDTree View
 map <C-n> :NERDTreeToggle<CR>
