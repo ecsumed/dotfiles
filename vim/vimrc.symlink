@@ -22,6 +22,10 @@ augroup CloseLoclistWindowGroup
 augroup END
 " }}}
 
+" ycm {{{
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" }}}
+
 " fzf {{{
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_layout = { 'down': '40%' }
