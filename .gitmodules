@@ -61,3 +61,9 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/YouCompleteMe"]
 	path = vim/vim.symlink/pack/git-plugins/start/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/vim-snippets.vim"]
+	path = vim/vim.symlink/pack/git-plugins/start/vim-snippets.vim
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/vim.symlink/pack/git-plugins/start/ultisnips"]
+	path = vim/vim.symlink/pack/git-plugins/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
