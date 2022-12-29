@@ -316,7 +316,7 @@ map N Nzz
 map n nzz
 
 " minimap toggle
-nnoremap <space>mt :MinimapToggle<CR>
+nnoremap <Leader>mt :MinimapToggle<CR>
 
 " fzf mappings
 nnoremap <c-p> :Files<cr>
