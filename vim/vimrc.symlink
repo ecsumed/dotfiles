@@ -324,6 +324,7 @@ nnoremap <Leader>mt :MinimapToggle<CR>
 
 " fzf mappings
 nnoremap <c-p> :Files<cr>
+nnoremap <silent> <Leader>f :Rg<CR>
 
 " git(fugitive) mappings
 " fugitive git bindings

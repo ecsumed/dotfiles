@@ -46,9 +46,6 @@
 [submodule "vim/vim.symlink/pack/git-plugins/start/minimap.vim"]
 	path = vim/vim.symlink/pack/git-plugins/start/minimap.vim
 	url = https://github.com/wfxr/minimap.vim.git
-[submodule "vim/vim.symlink/pack/git-plugins/start/ranger.vim"]
-	path = vim/vim.symlink/pack/git-plugins/start/ranger.vim
-	url = https://github.com/francoiscabrol/ranger.vim.git
 [submodule "vim/vim.symlink/pack/git-plugins/start/fzf.vim"]
 	path = vim/vim.symlink/pack/git-plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
