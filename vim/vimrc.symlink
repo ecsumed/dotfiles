@@ -74,10 +74,9 @@ set background=dark
 set t_Co=256
 
 " Theme setup
-" Set the following export in `~/.bashrc.local`
-" export VIM_THEME=kolor
-colorscheme $VIM_THEME
+colorscheme solarized
 let g:solarized_termcolors=256
+
 
 " Airline {{{
 let g:airline_theme = 'kolor'
@@ -155,6 +154,16 @@ function! ToggleErrors()
         ALEToggle
     endif
 endfunction
+
+" auto detect system theme
+function! DarkModeVim()
+    if system('defaults read -g AppleInterfaceStyle') =~ 'Dark'
+		set background=dark
+    else
+		set background=light
+    endif
+endfunction
+call DarkModeVim()
 
 " avoiding long lines
 match OverLength /\%95v.\+/
@@ -341,6 +350,7 @@ nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
 nnoremap <Leader>gps :Git! push<CR>
 nnoremap <Leader>gpl :Git! pull<CR>
+nnoremap <Leader>wip :Git add %:p <bar> Git commit -m 'wip' <bar> Git! push<CR>
 
 " Toggle NERDTree View
 map <C-n> :NERDTreeToggle<CR>
