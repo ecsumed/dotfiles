@@ -59,6 +59,9 @@ fi
 # source local bashrc
 source $HOME/.bashrc.local
 
+# wezterm shell integrations
+source $HOME/.wezterm.sh
+
 eval "$(starship init bash)"
 
 # vim:foldmethod=marker:foldlevel=0
