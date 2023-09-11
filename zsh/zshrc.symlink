@@ -63,4 +63,7 @@ source $HOME/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# wezterm shell integrations
+source $HOME/.wezterm.sh
+
 eval "$(starship init zsh)"

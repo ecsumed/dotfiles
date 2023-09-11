@@ -1,7 +1,5 @@
 local wezterm = require 'wezterm'
 
-local wezterm = require 'wezterm'
-
 -- wezterm.gui is not available to the mux server, so take care to
 -- do something reasonable when this config is evaluated by the mux
 function get_appearance()
@@ -25,14 +23,24 @@ return {
     color_scheme = scheme_for_appearance(get_appearance()),
 
 
+
      keys = {
        {
          key = 'P',
          mods = 'CTRL',
          action = wezterm.action.ActivateCommandPalette,
        },
+       {
+         key = 'UpArrow',
+         mods = 'SHIFT',
+         action = wezterm.action.ScrollToPrompt(-1),
+       },
+       {
+         key = 'DownArrow',
+         mods = 'SHIFT',
+         action = wezterm.action.ScrollToPrompt(1),
+       },
      },
-
 
     --window_background_image = '/Users/fsaleh/Pictures/wp9278277-dark-ocean-4k-wallpapers.jpg',
     --window_background_opacity = 0.2,
