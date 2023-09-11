@@ -7,3 +7,5 @@ git/gitconfig.local.symlink
 
 **local**
 !aliases.local.symlink
+
+.DS_Store
