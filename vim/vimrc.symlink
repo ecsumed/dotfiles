@@ -353,6 +353,13 @@ nnoremap <Leader>gps :Git! push<CR>
 nnoremap <Leader>gpl :Git! pull<CR>
 nnoremap <Leader>wip :Git add %:p <bar> Git commit -m 'wip' <bar> Git! push<CR>
 
+" ale bindings
+nnoremap <Leader>ar :ALERename<CR>
+nnoremap <Leader>ag :ALEGoToDefinition<CR>
+nnoremap <Leader>af :ALEFindReferences<CR>
+nnoremap <Leader>afr :ALEFileRename<CR>
+nnoremap <Leader>ac :ALECodeAction<CR>
+
 " Toggle NERDTree View
 map <C-n> :NERDTreeToggle<CR>
 
