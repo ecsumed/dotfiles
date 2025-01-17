@@ -2,8 +2,8 @@
 alias du='du -kh'
 alias df='df -kTh'
 
-alias ls='exa'
-alias ll='exa --long --tree -L1'
+alias ls='eza'
+alias ll='eza --long --tree -L1'
 
 # tmux color suppport
 alias tmux='tmux -2'
@@ -11,7 +11,7 @@ alias tmux='tmux -2'
 # fetch external ip
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-alias tree='exa --tree'
+alias tree='eza --tree'
 
 # execute last command with sudo 
 alias fuck='sudo $(history -p \!\!)'
