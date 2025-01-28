@@ -71,15 +71,24 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " AESTHETICS {{{
 " Theme setup
-colorscheme solarized
-let g:solarized_termcolors=256
+
+packadd! everforest
+" This configuration option should be placed before `colorscheme everforest`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'soft'
+" For better performance
+let g:everforest_better_performance = 1
+colorscheme everforest
+
+" colorscheme solarized
+" let g:solarized_termcolors=256
 
 " font/colorscheme options "
 set background=dark
 set t_Co=256
 
 " Airline {{{
-let g:airline_theme = 'kolor'
+let g:airline_theme = 'everforest'
 
 let g:airline#extensions#tabline#enabled = 1
 " }}}
