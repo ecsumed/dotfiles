@@ -6,6 +6,9 @@ source ~/.aliases
 # fzf key bindings
 source /usr/share/doc/fzf/examples/key-bindings.bash
 
+# For eza theme
+export EZA_CONFIG_DIR=$HOME/.config/eza
+
 # fzf auto completions
 source /usr/share/doc/fzf/examples/completion.bash
 
@@ -56,12 +59,14 @@ if [ -f /home/fahad/.fzf-completions.bash ] && ! shopt -oq posix; then
 fi
 # }}} 
 
+. "$HOME/.cargo/env"
+
 # source local bashrc
 source $HOME/.bashrc.local
 
 # wezterm shell integrations
 source $HOME/.wezterm.sh
 
-eval "$(starship init bash)"
 
+eval "$(starship init bash)"
 # vim:foldmethod=marker:foldlevel=0

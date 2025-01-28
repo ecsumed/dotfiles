@@ -190,7 +190,8 @@ install_mac_dependencies () {
   info 'installing mac dependencies'
   brew install \
     fzf \
-    exa \
+    eza \
+    bat \
     ripgrep
 }
 

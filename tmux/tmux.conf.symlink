@@ -2,7 +2,7 @@
 #########################
 # Plugins
 #########################
-set -g @plugin 'laktak/extrakto'
+#set -g @plugin 'laktak/extrakto'
 
 # Promising, but no support for ARM yet...
 # set -g @plugin 'fcsonline/tmux-thumbs'
@@ -13,11 +13,11 @@ set -g @plugin 'laktak/extrakto'
 #########################
 # set -g @plugin "arcticicestudio/nord-tmux"
 
-# set -g @plugin 'egel/tmux-gruvbox'
-# set -g @tmux-gruvbox 'dark' # or 'light'
+set -g @plugin 'egel/tmux-gruvbox'
+set -g @tmux-gruvbox 'dark' # or 'light'
 
-set -g @plugin 'seebi/tmux-colors-solarized'
-set -g @colors-solarized 'dark'
+# set -g @plugin 'seebi/tmux-colors-solarized'
+# set -g @colors-solarized 'dark'
 
 #########################
 # Everything else

@@ -338,7 +338,7 @@ nnoremap <c-p> :Files<cr>
 " git(fugitive) mappings
 " fugitive git bindings
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gs :Git<CR>
+"nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gd :Gvdiffsplit<CR>
 nnoremap <Leader>ge :Gedit<CR>
@@ -352,6 +352,7 @@ nnoremap <Leader>go :Git checkout<Space>
 nnoremap <Leader>gps :Git! push<CR>
 nnoremap <Leader>gpl :Git! pull<CR>
 nnoremap <Leader>wip :Git add %:p <bar> Git commit -m 'wip' <bar> Git! push<CR>
+nnoremap <Leader>gs :call ToggleGstatus()<CR>
 
 " ale bindings
 nnoremap <Leader>ar :ALERename<CR>
