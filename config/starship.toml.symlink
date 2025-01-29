@@ -25,7 +25,7 @@ $time
 [╰─$character](bold #4a4f3b)"""
 
 # Wait timout to check files under the current directory.
-scan_timeout = 10 # milliseconds
+scan_timeout = 1000 # milliseconds
 
 # Add new line before prompt
 add_newline = true
