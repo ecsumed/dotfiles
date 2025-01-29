@@ -57,9 +57,12 @@ let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'pr
 " }}}
 
 " AUTOCOMMANDS {{{
+"Open NERDTREE on startup
+autocmd VimEnter * NERDTree | wincmd p
+
 "Close NERDTree on close of last pane/tab/window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
- \ && b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') 
+  \ && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 
 " Set language specific indent sizes
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
@@ -70,9 +73,14 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " }}}
 
 " AESTHETICS {{{
-" Theme setup
 
+" Theme setup
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
 packadd! everforest
+
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
@@ -187,7 +195,7 @@ function! ToggleGstatus() abort
 endfunction
 
 " avoiding long lines
-match OverLength /\%95v.\+/
+match OverLength /\%100v.\+/
 " }}}
 
 " SETTINGS {{{ 

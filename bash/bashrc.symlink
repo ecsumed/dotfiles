@@ -6,9 +6,6 @@ source ~/.aliases
 # fzf key bindings
 source /usr/share/doc/fzf/examples/key-bindings.bash
 
-# For eza theme
-export EZA_CONFIG_DIR=$HOME/.config/eza
-
 # fzf auto completions
 source /usr/share/doc/fzf/examples/completion.bash
 
