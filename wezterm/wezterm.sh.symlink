@@ -24,6 +24,10 @@ if [ "${WEZTERM_SHELL_SKIP_ALL}" = "1" ] ; then
   return 0
 fi
 
+if [ -n "$VIM" ]; then
+  WEZTERM_SHELL_SKIP_ALL=1
+fi
+
 if [[ $- != *i* ]] ; then
   # Shell integration is only useful in interactive sessions
   return 0
