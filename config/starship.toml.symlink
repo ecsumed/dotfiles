@@ -2,7 +2,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[┌──────────────────────────────────────>](#4a4f3b)
 [│](bold #4a4f3b)\
 $username\
 $hostname\
@@ -13,7 +12,6 @@ $git_state\
 $git_metrics\
 $git_status\
 $fill\
-$status\
 $cmd_duration\
 $golang\
 $python\
@@ -25,7 +23,7 @@ $time
 [╰─$character](bold #4a4f3b)"""
 
 # Wait timout to check files under the current directory.
-scan_timeout = 1000 # milliseconds
+scan_timeout = 500 # milliseconds
 
 # Add new line before prompt
 add_newline = true
@@ -36,7 +34,7 @@ success_symbol = "[❯](bold #4a4f3b)"
 error_symbol = "[✗](bold red)"
 
 [fill]
-symbol = " "
+symbol = " • "
 style = "bold #4a4f3b"
 
 [username]
@@ -51,7 +49,8 @@ ssh_only = true
 format = " [$path]($style)[$read_only]($read_only_style)"
 truncate_to_repo = false
 style = "#a32f7e"
-truncation_length = 8
+truncation_length = 3
+truncation_symbol = '..'
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
@@ -62,23 +61,26 @@ format = '([\[$conflicted[$stashed](bold purple)$deleted$renamed$modified$staged
 stashed = "⍟"
 
 [kubernetes]
-format = '[ $symbol$context/$namespace ]($style)[  ](bold #A239A0)'
+format = '[ $symbol$context/$namespace ]($style)[  ](bold #A239A0)'
 style = "fg:white bg:#A239A0"
 disabled = false
 
+[python]
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\) )]($style)[  ](bold 105)'
+
 [terraform]
-format = "[$symbol$version$workspace]($style)[  ](bold 105)"
+format = "[$symbol$version$workspace]($style)[  ](bold 105)"
 
 [aws]
-format = '[$signal_name\($status\)$symbol]($style)[  ](bold yellow)'
+format = '[$signal_name\($status\)$symbol]($style)[  ](bold yellow)'
 
 [status]
-format = '[$signal_name\($status\)$symbol]($style)[  ](bold red)'
+format = '[$signal_name\($status\)$symbol]($style)[  ](bold red)'
 disabled = false
 
 [cmd_duration]
 min_time = 3_000 # milliseconds
-format = "took [$duration](bold yellow)[  ](bold yellow)"
+format = "[$duration](bold yellow)[  ](bold yellow)"    
 
 [time]
 disabled = false
